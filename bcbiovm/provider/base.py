@@ -40,6 +40,7 @@ class BaseCloudProvider(object):
         """
         pass
 
+    @abc.abstractmethod
     def network_setup(self, config, cluster, recreate, network):
         """Create private network and associated resources.
 
@@ -51,6 +52,22 @@ class BaseCloudProvider(object):
         :param cluster:  cluster name
         :param recreate: remove and recreate the network
         :param network:  network address in CIDR notation (a.b.c.d/e)
+        """
+        pass
+
+    @abc.abstractmethod
+    def resource_usage(self, cluster, config, verbose, log, outdir, rawdir):
+        """Generate system statistics from bcbio runs.
+
+        The statistics will contain information regarding
+        CPU, memory, network, disk I/O usage.
+
+        :param econfig: bcbio configuration file
+        :param cluster: cluster name
+        :param verbose: if is `True` the output will be suppressed
+        :param log:     local path to bcbio log file written by the run
+        :param outdir:  directory to put the output
+        :param rawdir:  directory to put raw data files
         """
         pass
 
