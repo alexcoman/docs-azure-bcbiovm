@@ -40,7 +40,6 @@ class BaseCloudProvider(object):
         """
         pass
 
-    def 
     def network_setup(self, config, cluster, recreate, network):
         """Create private network and associated resources.
 
