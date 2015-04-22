@@ -1,4 +1,7 @@
+from bcbiovm.common import util
 from bcbiovm.worker import base
+
+LOG = util.get_logger("DockerWorker")
 
 
 class DockerWorker(base.BaseWorker):
