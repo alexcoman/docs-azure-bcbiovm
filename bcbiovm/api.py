@@ -2,6 +2,7 @@
 
 from bcbiovm.common import constant
 from bcbiovm.common import exception
+from bcbiovm.common import objects
 from bcbiovm.cluster import factory as cluster_factory
 from bcbiovm.provider import factory as provider_factory
 
@@ -15,7 +16,14 @@ class BaseAPI(object):
     def __init__(self):
         self._resouces = {}
 
-    def _register_resource(self, resource):
+        for method in dir(self):
+            if method.startswith('_'):
+                # Ignore protected and private methods
+                continue
+            self._register_resource(container=self.__class__.name,
+                                    resource=method, alias=())
+
+    def _register_resource(self, container, resource, alias):
         if resource in self._IGNORE_LIST:
             return
 
@@ -23,21 +31,27 @@ class BaseAPI(object):
         if not method:
             raise ValueError('Invalid resource name.')
 
-        self._resouces[resource] = method
+        container = self._resouces.setdefault(container, [])
+        container.append(objects.Resource(name=resource,
+                                          call=method,
+                                          alias=alias))
 
-    def _get_resources(self):
-        for method in dir(self):
-            if method.startswith('_'):
-                # Ignore protected and private methods
-                continue
-            self._register_resource(method, getattr())
+    def _get_resource(self, method):
+        for _, container in self._resouces.items():
+            for resource in container:
+                if method == resource.name:
+                    return resource
+                elif resource.alias and method in resource.alias:
+                    return resource
+        return None
 
-    def dispatch(self, resource, *args, **kwargs):
-        if resource not in self._resouces:
+    def dispatch(self, method, *args, **kwargs):
+        resource = self._get_resource(method)
+        if not resource:
             raise AttributeError('Unregistered resource %(resource)s' %
                                  {"resource": resource})
         try:
-            return self._resouces[resource](*args, **kwargs)
+            return resource.call(*args, **kwargs)
         except exception.BCBioException:
             # TODO(alexandrucoman): Treat the exception properly
             pass
@@ -50,6 +64,8 @@ class API(BaseAPI):
         super(API, self).__init__()
         self._cluster = cluster_factory.get_cluster_manager(cluster_manager)
         self._provider = provider_factory.get_cloud_provider(cloud_provider)
+        # TODO(alexandrucoman): Get exposed methods from cluster manager and
+        #                       cloud provider.
 
     def bootstrap(self, config, cluster, no_reboot, verbose):
         """Update a bcbio system with the latest code and tools."""

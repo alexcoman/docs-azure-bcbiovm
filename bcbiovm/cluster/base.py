@@ -13,6 +13,9 @@ class BaseCluster(object):
 
     """Base class for the cluster managers."""
 
+    def __init__(self):
+        self.command
+
     @abc.abstractmethod
     def bootstrap(self, config, cluster, no_reboot=False, verbose=True):
         """Update a bcbio AWS system with the latest code and tools.
