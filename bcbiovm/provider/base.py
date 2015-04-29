@@ -88,34 +88,32 @@ class BaseCloudProvider(object):
         pass
 
     @abc.abstractmethod
-    def network_setup(self, config, cluster, recreate, network):
-        """Create private network and associated resources.
+    def colect_data(self, config, cluster, rawdir, verbose):
+        """Collect from the each instances the files which contains
+        information regarding resources consumption.
 
-        If it is possible a placement group or affinity group
-        should be created as well. A placement group is a logical
-        grouping of instances within a single availability zone.
+        :param config:    elasticluster config file
+        :param cluster:   cluster name
+        :param rawdir:    directory where to copy raw collectl data files.
+        :param log:       local path to bcbio log file written by the run
+        :param verbose:   if is `False` the output will be suppressed
 
-        :param config:   bcbio configuration file
-        :param cluster:  cluster name
-        :param recreate: remove and recreate the network
-        :param network:  network address in CIDR notation (a.b.c.d/e)
+        Notes:
+            The current workflow is the following:
+                - establish a SSH connection with the instance
+                - get information regarding the `collectl` files
+                - copy to local the files which contain new information
+
+            This files will be used in order to generate system statistics
+            from bcbio runs. The statistics will contain information regarding
+            CPU, memory, network, disk I/O usage.
         """
-        pass
+        # TODO(alexandrucoman): Add a tool in common.utils in order to ease
+        #                       getting those files.
 
-    @abc.abstractmethod
-    def resource_usage(self, cluster, config, verbose, log, outdir, rawdir):
-        """Generate system statistics from bcbio runs.
-
-        The statistics will contain information regarding
-        CPU, memory, network, disk I/O usage.
-
-        :param econfig: bcbio configuration file
-        :param cluster: cluster name
-        :param verbose: if is `True` the output will be suppressed
-        :param log:     local path to bcbio log file written by the run
-        :param outdir:  directory to put the output
-        :param rawdir:  directory to put raw data files
-        """
+        # Note(alexandrucoman): Those files will be parsed and the information
+        #                       will be used to generate a graph with resource
+        #                       usage.
         pass
 
     def flavors(self, machine=None):
