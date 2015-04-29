@@ -35,9 +35,56 @@ class BaseCloudProvider(object):
         """
         Get all the information available for this provider.
 
-        :param config: bcbio configuration file
-        :param cluster: cluster name
+        The returned information will be used to create a status report
+        regarding the bcbio instances.
+
+        :config:    elasticluster config file
+        :cluster:   cluster name
+
+        The proposed structure for the returned information is the following:
+        ::
+            {
+                # General information regarding the cloud provider
+                "meta": {
+                    "available_clusters": [],
+                    # ...
+                }
+
+                # Information regarding the received cluster
+                "cluster": {
+                    "frontend_node": {
+                        "count": 1,
+                        "flavor": "m3.2xlarge",
+                    },
+                    "compute_node": {
+                        "count": 1024,
+                        "flavor": "m3.2xlarge",
+                    },
+                    # List of security groups
+                    "security_group": []
+                    # Private network / Virtual Private Cloud information
+                    "private_network": {
+                        # ...
+                    }
+                    # Information regarding instance
+                    "instances" : {
+                        # instance_name: {
+                        #     "instance_state": instance_state
+                        #     "ip_address": ip_address,
+                        #     [...]
+                        # }
+                    }
+                }
+
+            }
         """
+        # NOTE(alexandrucoman): In the current implementation of
+        #                       bcbio-nextgen-vm all the information is
+        #                       directly printed.
+
+        # TODO(alexandrucoman): Add a custom container for the information.
+        # TODO(alexandrucoman): Add a formatter for the container in order
+        #                       to display the information
         pass
 
     @abc.abstractmethod
