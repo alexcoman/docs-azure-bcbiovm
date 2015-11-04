@@ -1,7 +1,9 @@
-title: 'bcbio-nextgen-vm on Windows Azure'
-subtitle: 'A brief documentation for bcbio-nextgen-vm on Windows Azure'
-
+# General configuration
+url: https://alexcoman.github.io/
 baseurl: '/project/bcbio-nextgen-vm'
+enforce_ssl: alexcoman.com
+safe: true
+lsi: false
 permalink: none
 highlighter: pygments
 future: true
@@ -25,6 +27,8 @@ redcarpet:
 
 # Setting for jekyll-docs-template
 
+title: 'bcbio-nextgen-vm on Windows Azure'
+subtitle: 'A brief documentation for bcbio-nextgen-vm on Windows Azure'
 # Enable/show navigation. There are there options:
 #   0 - always hide
 #   1 - always show
@@ -36,3 +40,12 @@ codeurl: 'https://github.com/alexandrucoman/docs-azure-bcbiovm'
 sections: [
     ['doc', 'Documentation'],
 ]
+
+# Settings for deploy rake task
+username:        alexandrucoman
+repo:            docs-azure-bcbiovm
+branch:          master
+relative_source: ../docs-azure-bcbiovm/
+destination:     ../docs-azure-bcbiovm-pages/
+production_url:  https://alexcoman.github.io/project/bcbio-nextgen-vm
+source_url:      https://github.com/alexandrucoman/docs-azure-bcbiovm
