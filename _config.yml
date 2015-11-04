@@ -1,0 +1,51 @@
+# General configuration
+url: https://alexcoman.github.io/
+baseurl: '/project/bcbio-nextgen-vm'
+enforce_ssl: alexcoman.com
+safe: true
+lsi: false
+permalink: none
+highlighter: pygments
+future: true
+
+# Exclude non-site files
+exclude: ['README.md', '.gitignore']
+
+# Use the redcarpet Markdown renderer
+markdown: redcarpet
+redcarpet:
+    extensions: [
+        'no_intra_emphasis',
+        'fenced_code_blocks',
+        'autolink',
+        'strikethrough',
+        'superscript',
+        'with_toc_data',
+        'tables',
+        'hardwrap'
+    ]
+
+# Setting for jekyll-docs-template
+
+title: 'bcbio-nextgen-vm on Windows Azure'
+subtitle: 'A brief documentation for bcbio-nextgen-vm on Windows Azure'
+# Enable/show navigation. There are there options:
+#   0 - always hide
+#   1 - always show
+#   2 - show only if posts are present
+navigation: 1
+disqus_shortname: ''
+google_analytics_id: ''
+codeurl: 'https://github.com/alexandrucoman/docs-azure-bcbiovm'
+sections: [
+    ['doc', 'Documentation'],
+]
+
+# Settings for deploy rake task
+username:        alexandrucoman
+repo:            docs-azure-bcbiovm
+branch:          master
+relative_source: ../docs-azure-bcbiovm/
+destination:     ../docs-azure-bcbiovm-pages/
+production_url:  https://alexcoman.github.io/project/bcbio-nextgen-vm
+source_url:      https://github.com/alexandrucoman/docs-azure-bcbiovm
