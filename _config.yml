@@ -1,46 +1,13 @@
-# Site title and subtitle. This is used in _includes/header.html
-title: 'jekyll-docs-template'
-subtitle: 'Painless documentation for your projects'
+title: 'bcbio-nextgen-vm on Windows Azure'
+subtitle: 'A brief documentation for bcbio-nextgen-vm on Windows Azure'
 
-# if you wish to integrate disqus on pages set your shortname here
-disqus_shortname: ''
-
-# if you use google analytics, add your tracking id here
-google_analytics_id: ''
-
-# Enable/show navigation. There are there options:
-#   0 - always hide
-#   1 - always show
-#   2 - show only if posts are present
-navigation: 2
-
-# URL to source code, used in _includes/footer.html
-codeurl: 'https://github.com/bruth/jekyll-docs-template'
-
-# Default categories (in order) to appear in the navigation
-sections: [
-    ['doc', 'Documentation'],
-    ['tut', 'Tutorial'],
-    ['ref', 'Reference'],
-    ['dev', 'Developers'],
-    ['post', 'Posts']
-]
-
-# Keep as an empty string if served up at the root. If served up at a specific
-# path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
-baseurl: ''
-
-# Dates are not included in permalinks
+baseurl: '/project/bcbio-nextgen-vm'
 permalink: none
-
-# Syntax highlighting
 highlighter: pygments
-
-# Since these are pages, it doesn't really matter
 future: true
 
 # Exclude non-site files
-exclude: ['bin', 'README.md']
+exclude: ['README.md', '.gitignore']
 
 # Use the redcarpet Markdown renderer
 markdown: redcarpet
@@ -55,3 +22,17 @@ redcarpet:
         'tables',
         'hardwrap'
     ]
+
+# Setting for jekyll-docs-template
+
+# Enable/show navigation. There are there options:
+#   0 - always hide
+#   1 - always show
+#   2 - show only if posts are present
+navigation: 1
+disqus_shortname: ''
+google_analytics_id: ''
+codeurl: 'https://github.com/alexandrucoman/docs-azure-bcbiovm'
+sections: [
+    ['doc', 'Documentation'],
+]
