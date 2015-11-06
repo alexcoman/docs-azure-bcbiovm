@@ -1,7 +1,7 @@
 # General configuration
-url: https://alexcoman.github.io/
-baseurl: '/project/bcbio-nextgen-vm'
-enforce_ssl: alexcoman.com
+url: https://alexandrucoman.github.io/
+baseurl: '/docs-azure-bcbiovm'
+enforce_ssl: alexandrucoman.github.io
 safe: true
 lsi: false
 permalink: none
@@ -9,7 +9,7 @@ highlighter: pygments
 future: true
 
 # Exclude non-site files
-exclude: ['README.md', '.gitignore']
+exclude: ['README.md', '.gitignore', 'Gemfile', 'Gemfile.lock']
 
 # Use the redcarpet Markdown renderer
 markdown: redcarpet
@@ -47,5 +47,5 @@ repo:            docs-azure-bcbiovm
 branch:          master
 relative_source: ../docs-azure-bcbiovm/
 destination:     ../docs-azure-bcbiovm-pages/
-production_url:  https://alexcoman.github.io/project/bcbio-nextgen-vm
+production_url:  https://alexandrucoman.github.io/docs-azure-bcbiovm.
 source_url:      https://github.com/alexandrucoman/docs-azure-bcbiovm
