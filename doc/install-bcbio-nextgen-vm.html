@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width">
 
-        <title>bcbio-nextgen-vm on Windows Azure : bcbio-nextgen-vm on Windows Azure</title>
+        <title>bcbio-nextgen-vm on Windows Azure : Install bcbio-nextgen-vm</title>
         <meta name="description" content="A brief documentation for bcbio-nextgen-vm on Windows Azure">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,27 @@
                     </div>
 
                     <div id="content" class="col-sm-10">
-                        
+                        <div class="page-header">
+    <h2>Install bcbio-nextgen-vm
+        
+    </h2>
+</div>
+
+<h3 id="ii-1-add-conda-channel">II.1. Add conda channel</h3>
+
+<p>There are two versions of <em>bcbio-nextgen-vm</em> available, the stable (on <strong>bcbio</strong> channel) one and the develop one (on <strong>bcbio-dev</strong> channel). </p>
+
+<p>For bcbio-nextgen-vm stable version we will add only the <strong>bcbio</strong> channel.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ conda config --add channels bcbio
+</code></pre></div>
+<p>And for the development version we will need the both channels.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ conda config --add channels bcbio
+~ $ conda config --add channels bcbio-dev
+</code></pre></div>
+<h3 id="ii-2-install-bcbio-nextgen-vm-package">II.2. Install bcbio-nextgen-vm package</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ conda install --yes bcbio-nextgen-vm
+</code></pre></div>
+
                     </div>
                 
             </div>

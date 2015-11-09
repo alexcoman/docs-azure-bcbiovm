@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width">
 
-        <title>bcbio-nextgen-vm on Windows Azure : bcbio-nextgen-vm on Windows Azure</title>
+        <title>bcbio-nextgen-vm on Windows Azure : Environment Setup</title>
         <meta name="description" content="A brief documentation for bcbio-nextgen-vm on Windows Azure">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,41 @@
                     </div>
 
                     <div id="content" class="col-sm-10">
-                        
+                        <div class="page-header">
+    <h2>Environment Setup
+        
+    </h2>
+</div>
+
+<h3 id="i-1-update-the-system">I.1. Update the system</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get update -y &amp;&gt; /dev/null
+~ $ sudo apt-get upgrade -y &amp;&gt; /dev/null
+</code></pre></div>
+<h3 id="i-2-install-required-packages">I.2. Install required packages</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get install -y git &amp;&gt; /dev/null
+~ $ sudo apt-get install -y libatlas-dev libatlas-base-dev &amp;&gt; /dev/null
+~ $ sudo apt-get install -y liblapack-dev gfortran &amp;&gt; /dev/null
+</code></pre></div>
+<h3 id="i-3-install-azure-client">I.3. Install azure client</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get install -y nodejs-legacy npm &amp;&gt; /dev/null
+~ $ sudo npm install -gq azure-cli &amp;&gt; /dev/null
+</code></pre></div>
+<h3 id="i-4-install-miniconda">I.4. Install miniconda</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ cd &quot;$HOME&quot;
+~ $ wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh &amp;&gt; /dev/null
+~ $ chmod +x miniconda.sh
+~ $ bash miniconda.sh -b -p &quot;$HOME/miniconda&quot; &amp;&gt; /dev/null
+~ $ PATH=&quot;$HOME/miniconda/bin:$PATH&quot;
+# Add conda to PATH
+~ $ echo &#39;PATH=&quot;$HOME/miniconda/bin:$PATH&quot;&#39; &gt;&gt; &quot;$HOME/.bashrc&quot;
+# Update conda
+~ $ conda update --yes --quiet conda &amp;&gt; /dev/null
+</code></pre></div>
+<h3 id="i-5-install-additional-conda-packages">I.5. Install additional conda packages</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ conda install --yes --quiet jinja2 toolz binstar &amp;&gt; /dev/null
+~ $ conda install --yes --quiet pep8 pylint &amp;&gt; /dev/null
+</code></pre></div>
+
                     </div>
                 
             </div>
