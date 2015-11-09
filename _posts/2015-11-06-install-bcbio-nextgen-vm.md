@@ -3,7 +3,6 @@ layout: page
 title: "Install bcbio-nextgen-vm"
 category: doc
 date: 2015-11-06 12:00:00
-order: 2
 ---
 
 ###II.1. Add conda channel
