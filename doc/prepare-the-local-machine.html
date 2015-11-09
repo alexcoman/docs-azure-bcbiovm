@@ -62,23 +62,16 @@
 
 <h3 id="setup-the-datadir">Setup the <code>datadir</code></h3>
 
-<ul>
-<li>Create the <code>datadir</code>:</li>
-</ul>
+<p>Create the <code>datadir</code>:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>mkdir -p ~/install/bcbio-vm/data
 ~ <span class="nv">$ </span><span class="nb">cd</span> ~/install/bcbio-vm/data
 ~ <span class="nv">$ </span>ln -s /usr/local/share/bcbio_nextgen/genomes
 ~ <span class="nv">$ </span>ln -s /usr/local/share/gemini/data gemini_data
 </code></pre></div>
-<ul>
-<li>Create the <code>datadir</code> using bcbiovm client application: </li>
-</ul>
+<p>Create the <code>datadir</code> using bcbiovm client application: </p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbiovm.py azure prepare datadir --path ~/install/bcbio-vm/data
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[INFO]: The datadir was successfully created.
 </code></pre></div>
-<ul>
-<li>Update the default value for <code>datadir</code>:</li>
-</ul>
+<p>Update the default value for <code>datadir</code>:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py --datadir<span class="o">=</span>~/install/bcbio-vm/data saveconfig
 </code></pre></div>
 <p>The output:</p>
