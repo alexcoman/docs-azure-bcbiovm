@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>bcbio-nextgen-vm on Windows Azure : Setup Windows Azure environment</title>
+        <meta name="description" content="A brief documentation for bcbio-nextgen-vm on Windows Azure">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/docs-azure-bcbiovm/css/syntax.css">
+        <link rel="stylesheet" href="/docs-azure-bcbiovm/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/docs-azure-bcbiovm/">bcbio-nextgen-vm on Windows Azure</a>
+    <small>A brief documentation for bcbio-nextgen-vm on Windows Azure</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-sm-2">
+                        <ul class="nav nav-list">
+    <li><a href="/docs-azure-bcbiovm/">Home</a></li>
+    
+        
+        
+
+        
+            
+                <li class="nav-header">Documentation</li>
+            
+            <li><a href="/docs-azure-bcbiovm/doc/environment-setup.html">Environment Setup</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/install-bcbio-nextgen-vm.html">Install bcbio-nextgen-vm</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/prepare-the-local-machine.html">Prepare the local machine</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/setup-azure-environment.html">Setup Windows Azure environment</a></li>
+        
+    
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-sm-10">
+                        <div class="page-header">
+    <h2>Setup Windows Azure environment
+        
+    </h2>
+</div>
+
+<h3 id="generate-a-new-management-certificate">Generate a new management certificate</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">usage: bcbio_vm.py azure prepare management-cert [-h] [-c COUNTRY] [-st STATE]
+                                                 [-o ORGANIZATION] [-cn CNAME]
+                                                 [-e EMAIL] [-f]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c COUNTRY, --country COUNTRY
+                        Country Name (2 letter code)
+  -st STATE, --state STATE
+                        State or Province Name (full name)
+  -o ORGANIZATION, --organization ORGANIZATION
+                        Organization Name (eg, company)
+  -cn CNAME, --cname CNAME
+                        Common Name (e.g. server FQDN or YOUR name)
+  -e EMAIL, --email EMAIL
+                        Email Address
+  -f, --force           Overwrite the management certificate if already exits.
+</code></pre></div>
+<p>For example if we want to generate a management certificate for <strong>Alexandru Coman</strong> from <strong>Iași, Romania</strong> which works at <strong>Cloudbase Solutions</strong> the command line will look as follows:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure prepare management-cert <span class="se">\</span>
+    --country RO <span class="se">\</span>
+    --state Iasi <span class="se">\</span>
+    --organization <span class="s2">&quot;Cloudbase Solutions&quot;</span> <span class="se">\</span>
+    --cname <span class="s2">&quot;Alexandru Coman&quot;</span> <span class="se">\</span>
+    --email <span class="s2">&quot;acoman@cloudbasesolutions.com&quot;</span>
+</code></pre></div>
+<p>The output for this command:
+<code>
+[INFO] Execution of command ManagementCertificate ends with success. (None)
+[INFO] The management certificate was successfully generated.
+</code></p>
+
+<h3 id="uploading-managementcert-cer-file-to-windows-azure">Uploading managementCert.cer file to Windows Azure</h3>
+
+<p>Once you have the <strong>managementCert.cer</strong> file which contains the public key, you need to upload it to the Windows Azure Management Portal. Open a browser and go to the portal: <a href="https://manage.windowsazure.com">manage.windowsazure.com</a>. Once you sign in, select the Settings tab on the far bottom of the left side of the portal, then click on Management Certificates.</p>
+
+<p><img src="https://alexandrucoman.github.io//assets/upload-management-cer-1.png" alt="Settings / Management Certificates"></p>
+
+<p>On the Management Certificates page, you can select the Upload action from the command bar at the bottom of the screen. It will prompt you for the .cer file you created which contains the public key for the certificate. Click on the little folder icon and locate the .cer file you created. If you have more than one subscription you may also see a drop-down with your subscriptions listed. If so, select the subscription you want to relate the certificate to. Finally, click the check mark to complete the upload.</p>
+
+<p><img src="https://alexandrucoman.github.io//assets/upload-management-cer-2.png" alt="Management Certificates / Upload"></p>
+
+<p>Within a few seconds the upload will complete and you will see the certificate in your list. If you wish to relate the same certificate to multiple subscriptions just repeat the steps above for each subscription. Note that relating the same certificate to multiple subscriptions is convenient, but somewhat like using the same password for multiple accounts. If someone gets a hold of the private portion of the certificate they would have access to all of the subscriptions.</p>
+
+<p><img src="https://alexandrucoman.github.io//assets/upload-management-cer-3.png" alt="Management Certificates"></p>
+
+<h3 id="generate-the-private-key">Generate the private key</h3>
+
+<p>Create a private key file that matches your management certificate.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">usage: bcbio_vm.py azure prepare pkey [-h] [--cert CERT] [-f]
+
+optional arguments:
+  -h, --help   show this help message and exit
+  --cert CERT  The management certificate name. [default: managementCert.pem]
+  -f, --force  Overwrite the management certificate if already exits.
+</code></pre></div>
+<p>We will use the default values.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure prepare pkey
+</code></pre></div>
+<p>The output for this command:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[INFO] Execution of command PrivateKey ends with success. (None)
+[INFO] The private key was successfully generated.
+</code></pre></div>
+<h3 id="create-the-elasticluster-configuration-file">Create the elasticluster configuration file</h3>
+
+<p>Write Elasticluster configuration file with user information.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">usage: bcbio_vm.py azure prepare ec-config [-h] [--econfig ECONFIG]
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --econfig ECONFIG  Elasticluster bcbio configuration file
+</code></pre></div>
+<p>We will use the default values.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ bcbio_vm.py azure prepare ec-config
+</code></pre></div>
+<p>The output for this command.
+<code>
+[INFO] Execution of command ECConfig ends with success. (None)
+[INFO] The elasticluster config was successfully generated.
+</code></p>
+
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="https://github.com/alexandrucoman/docs-azure-bcbiovm">bcbio-nextgen-vm on Windows Azure</a>
+
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
