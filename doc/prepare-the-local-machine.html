@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width">
 
-        <title>bcbio-nextgen-vm on Windows Azure : Environment Setup</title>
+        <title>bcbio-nextgen-vm on Windows Azure : Prepare the local machine</title>
         <meta name="description" content="A brief documentation for bcbio-nextgen-vm on Windows Azure">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -55,39 +55,66 @@
 
                     <div id="content" class="col-sm-10">
                         <div class="page-header">
-    <h2>Environment Setup
+    <h2>Prepare the local machine
         
     </h2>
 </div>
 
-<h3 id="i-1-update-the-system">I.1. Update the system</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get update -y &amp;&gt; /dev/null
-~ $ sudo apt-get upgrade -y &amp;&gt; /dev/null
+<h3 id="setup-the-datadir">Setup the <code>datadir</code></h3>
+
+<ul>
+<li><p>Create the <code>datadir</code>:
+<code>bash
+~ $ mkdir -p ~/install/bcbio-vm/data
+~ $ cd ~/install/bcbio-vm/data
+~ $ ln -s /usr/local/share/bcbio_nextgen/genomes
+~ $ ln -s /usr/local/share/gemini/data gemini_data
+</code>  </p></li>
+<li><p>Create the <code>datadir</code> using bcbiovm client application: 
+<code>bash
+~ $ bcbiovm.py azure prepare datadir --path ~/install/bcbio-vm/data
+</code></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[INFO]: The datadir was successfully created.
+</code></pre></div></li>
+<li><p>Update the default value for <code>datadir</code>:
+<code>bash
+~ $ bcbio_vm.py --datadir=~/install/bcbio-vm/data saveconfig
+</code></p>
+
+<p>The output:
+<code>
+[DEBUG]: Updating `datadir` value with `/home/alex/install/bcbio-vm/data`
+[INFO]:  Writing the config file to `/home/alex/.config/bcbio-nextgen/bcbio-docker-config.yaml`.
+[INFO]:  Execution of command `SaveConfig` ends with success. (None)
+</code></p></li>
+</ul>
+
+<h3 id="setup-docker-if-is-required">Setup docker (if is required)</h3>
+
+<p>Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation instructions are available <a href="https://docs.docker.com/engine/installation/">here</a>.
+<strong>Note:</strong> in order to complete this step it will need <strong>root</strong> permissions.</p>
+
+<p>Setup a docker group to provide the ability to run Docker without being root. Some installations, like Debian/Ubuntu packages do this automatically. You&#39;ll also want to add the trusted user who will be managing and testing docker images to this group:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>sudo groupadd docker
+~ <span class="nv">$ </span>sudo service docker restart
+~ <span class="nv">$ </span>sudo gpasswd -a <span class="k">${</span><span class="nv">USERNAME</span><span class="k">}</span> docker
+~ <span class="nv">$ </span>newgrp docker
 </code></pre></div>
-<h3 id="i-2-install-required-packages">I.2. Install required packages</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get install -y git &amp;&gt; /dev/null
-~ $ sudo apt-get install -y libatlas-dev libatlas-base-dev &amp;&gt; /dev/null
-~ $ sudo apt-get install -y liblapack-dev gfortran &amp;&gt; /dev/null
+<p>Ensure the driver script is setgid to the docker group. This allows users to run bcbio-nextgen without needing to be in the docker group or have root access. To avoid security issues, bcbio_vm.py sanitizes input arguments and runs the internal docker process as the calling user using a small wrapper script so it will only have permissions available to that user:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>sudo chgrp docker /usr/local/bin/bcbio_vm.py
+~ <span class="nv">$ </span>sudo chmod g+s /usr/local/bin/bcbio_vm.py
 </code></pre></div>
-<h3 id="i-3-install-azure-client">I.3. Install azure client</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ sudo apt-get install -y nodejs-legacy npm &amp;&gt; /dev/null
-~ $ sudo npm install -gq azure-cli &amp;&gt; /dev/null
+<p>Install the current bcbio docker image into your local repository by hand with:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>docker pull bcbio/bcbio
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Using default tag: latest
+latest: Pulling from bcbio/bcbio
+78f8b74a3cfc: Pull complete 
+77a2d9ee7d3f: Pull complete 
+Digest: sha256:8e4a8372c2846607e4c32c33b08035340b7c2a2e54463ec06ac698ce5af27595
+Status: Downloaded newer image for bcbio/bcbio:latest
 </code></pre></div>
-<h3 id="i-4-install-miniconda">I.4. Install miniconda</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ cd &quot;$HOME&quot;
-~ $ wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh &amp;&gt; /dev/null
-~ $ chmod +x miniconda.sh
-~ $ bash miniconda.sh -b -p &quot;$HOME/miniconda&quot; &amp;&gt; /dev/null
-~ $ PATH=&quot;$HOME/miniconda/bin:$PATH&quot;
-# Add conda to PATH
-~ $ echo &#39;PATH=&quot;$HOME/miniconda/bin:$PATH&quot;&#39; &gt;&gt; &quot;$HOME/.bashrc&quot;
-# Update conda
-~ $ conda update --yes --quiet conda &amp;&gt; /dev/null
-</code></pre></div>
-<h3 id="i-5-install-additional-conda-packages">I.5. Install additional conda packages</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ conda install --yes --quiet jinja2 toolz binstar &amp;&gt; /dev/null
-~ $ conda install --yes --quiet pep8 pylint &amp;&gt; /dev/null
-</code></pre></div>
+<p>The installer does this automatically, but this is useful if you want to work with the bcbio-nextgen docker image independently from the wrapper.</p>
+
 
                     </div>
                 
