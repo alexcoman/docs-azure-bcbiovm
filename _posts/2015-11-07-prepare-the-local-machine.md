@@ -3,7 +3,6 @@ layout: page
 title: "Prepare the local machine"
 category: doc
 date: 2015-11-07 12:00:00
-order: 3
 ---
 
 ###Setup the `datadir`

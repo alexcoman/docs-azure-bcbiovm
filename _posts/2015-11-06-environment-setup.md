@@ -3,7 +3,6 @@ layout: page
 title: "Environment Setup"
 category: doc
 date: 2015-11-06 12:00:00
-order: 1
 ---
 
 ###I.1. Update the system
