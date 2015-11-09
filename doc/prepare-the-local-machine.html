@@ -63,32 +63,29 @@
 <h3 id="setup-the-datadir">Setup the <code>datadir</code></h3>
 
 <ul>
-<li><p>Create the <code>datadir</code>:
-<code>bash
-~ $ mkdir -p ~/install/bcbio-vm/data
-~ $ cd ~/install/bcbio-vm/data
-~ $ ln -s /usr/local/share/bcbio_nextgen/genomes
-~ $ ln -s /usr/local/share/gemini/data gemini_data
-</code>  </p></li>
-<li><p>Create the <code>datadir</code> using bcbiovm client application: 
-<code>bash
-~ $ bcbiovm.py azure prepare datadir --path ~/install/bcbio-vm/data
-</code></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[INFO]: The datadir was successfully created.
-</code></pre></div></li>
-<li><p>Update the default value for <code>datadir</code>:
-<code>bash
-~ $ bcbio_vm.py --datadir=~/install/bcbio-vm/data saveconfig
-</code></p>
-
-<p>The output:
-<code>
-[DEBUG]: Updating `datadir` value with `/home/alex/install/bcbio-vm/data`
+<li>Create the <code>datadir</code>:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>mkdir -p ~/install/bcbio-vm/data
+~ <span class="nv">$ </span><span class="nb">cd</span> ~/install/bcbio-vm/data
+~ <span class="nv">$ </span>ln -s /usr/local/share/bcbio_nextgen/genomes
+~ <span class="nv">$ </span>ln -s /usr/local/share/gemini/data gemini_data
+</code></pre></div>
+<ul>
+<li>Create the <code>datadir</code> using bcbiovm client application: </li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbiovm.py azure prepare datadir --path ~/install/bcbio-vm/data
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[INFO]: The datadir was successfully created.
+</code></pre></div>
+<ul>
+<li>Update the default value for <code>datadir</code>:</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py --datadir<span class="o">=</span>~/install/bcbio-vm/data saveconfig
+</code></pre></div>
+<p>The output:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[DEBUG]: Updating `datadir` value with `/home/alex/install/bcbio-vm/data`
 [INFO]:  Writing the config file to `/home/alex/.config/bcbio-nextgen/bcbio-docker-config.yaml`.
 [INFO]:  Execution of command `SaveConfig` ends with success. (None)
-</code></p></li>
-</ul>
-
+</code></pre></div>
 <h3 id="setup-docker-if-is-required">Setup docker (if is required)</h3>
 
 <p>Docker Engine is supported on Linux, Cloud, Windows, and OS X. Installation instructions are available <a href="https://docs.docker.com/engine/installation/">here</a>.
