@@ -23,3 +23,8 @@ More information can be found [here](https://bcbio-nextgen.readthedocs.org/en/la
 - III. [Prepare the local machine](doc/prepare-the-local-machine.html)
     - III.1. [Setup the datadir](doc/prepare-the-local-machine.html#iii1-setup-the-datadir)
     - III.2. [Setup docker (if is required)](doc/prepare-the-local-machine.html#iii2-setup-docker-if-is-required)
+- IV. [Setup azure environment](doc/setup-azure-environment.html)
+    - IV.1. [Generate a new management certificate](doc/setup-azure-environment.html#generate-a-new-management-certificate)
+    - IV.2. [Uploading managementCert.cer file to Windows Azure](doc/setup-azure-environment.html#uploading-managementcertcer-file-to-windows-azure)
+    - IV.3. [Generate the private key](doc/setup-azure-environment.html#generate-the-private-key)
+    - IV.4. [Create the elasticluster configuration file](doc/setup-azure-environment.html#create-the-elasticluster-configuration-file)
