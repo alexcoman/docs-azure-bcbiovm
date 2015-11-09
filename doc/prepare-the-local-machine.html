@@ -38,17 +38,15 @@
             
                 <li class="nav-header">Documentation</li>
             
-            <li data-order="3"><a href="/docs-azure-bcbiovm/doc/prepare-the-local-machine.html">Prepare the local machine</a></li>
+            <li><a href="/docs-azure-bcbiovm/doc/environment-setup.html">Environment Setup</a></li>
         
             
-            <li data-order="2"><a href="/docs-azure-bcbiovm/doc/install-bcbio-nextgen-vm.html">Install bcbio-nextgen-vm</a></li>
+            <li><a href="/docs-azure-bcbiovm/doc/install-bcbio-nextgen-vm.html">Install bcbio-nextgen-vm</a></li>
         
             
-            <li data-order="1"><a href="/docs-azure-bcbiovm/doc/environment-setup.html">Environment Setup</a></li>
+            <li><a href="/docs-azure-bcbiovm/doc/prepare-the-local-machine.html">Prepare the local machine</a></li>
         
     
-<!-- List additional links. It is recommended to add a divider
-    e.g. <li class="divider"></li> first to break up the content. -->
 </ul>
 
                     </div>
@@ -119,56 +117,6 @@ Status: Downloaded newer image for bcbio/bcbio:latest
                 </div>
             </div>
         </div>
-
-        <script>
-            function orderNav() {
-                var list,
-                    section,
-                    header,
-                    sections = [],
-                    lists = {},
-                    headers = {};
-
-                var navUl = document.querySelectorAll('#navigation ul')[0],
-                    navLis = document.querySelectorAll('#navigation ul li');
-
-                if (!navUl) return;
-
-                for (var i = 0; i < navLis.length; i++) {
-                    var order, li = navLis[i];
-
-                    if (li.classList.contains('nav-header')) {
-                        section = li.textContent || li.innerText;
-                        sections.push(section);
-                        headers[section] = li;
-                        continue;
-                    }
-
-                    if (!lists[section]) {
-                        lists[section] = [];
-                    }
-
-                    order = parseFloat(li.getAttribute('data-order'))
-                    lists[section].push([order, li]);
-                }
-
-                for (var i = 0; i < sections.length; i++) {
-                    section = sections[i];
-                    list = lists[section].sort(function(a, b) {
-                        return a[0] - b[0];
-                    });
-
-                    if (header = headers[section]) {
-                        navUl.appendChild(header);
-                    }
-                    for (var j = 0; j < list.length; j++) {
-                        navUl.appendChild(list[j][1]);
-                    }
-                }
-            }
-
-            if (document.querySelectorAll) orderNav();
-        </script>
         
     </body>
 </html>
