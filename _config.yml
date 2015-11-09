@@ -47,5 +47,5 @@ repo:            docs-azure-bcbiovm
 branch:          master
 relative_source: ../docs-azure-bcbiovm/
 destination:     ../docs-azure-bcbiovm-pages/
-production_url:  https://alexandrucoman.github.io/docs-azure-bcbiovm.
+production_url:  https://alexandrucoman.github.io/docs-azure-bcbiovm
 source_url:      https://github.com/alexandrucoman/docs-azure-bcbiovm
