@@ -142,173 +142,173 @@ Status: Downloaded newer image for bcbio/bcbio:latest
     --buildingtype full <span class="se">\</span>
     --rundir /tmp/bcbio-nextgen <span class="se">\</span>
     --no-upload
-</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&lt;</span> <span class="n">PLAY</span> <span class="p">[</span><span class="n">Create</span> <span class="n">the</span> <span class="n">bcbio_vm</span> <span class="n">docker</span> <span class="n">image</span> <span class="n">locally</span><span class="p">]</span> <span class="o">&gt;</span>
- <span class="o">-------------------------------------------------</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">&lt; PLAY [Create the bcbio_vm docker image locally] &gt;
+ -------------------------------------------------
 
- <span class="n">_________________</span>
-<span class="o">&lt;</span> <span class="n">GATHERING</span> <span class="n">FACTS</span> <span class="o">&gt;</span>
- <span class="o">-----------------</span>
-<span class="o">&lt;</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">&gt;</span> <span class="n">REMOTE_MODULE</span> <span class="n">setup</span>
-<span class="n">ok</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ _________________
+&lt; GATHERING FACTS &gt;
+ -----------------
+&lt;127.0.0.1&gt; REMOTE_MODULE setup
+ok: [127.0.0.1]
 
- <span class="n">________________________________________________________</span>
-<span class="o">&lt;</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">Clone</span> <span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span> <span class="kn">from</span> <span class="nn">GitHub</span> <span class="o">&gt;</span>
- <span class="o">--------------------------------------------------------</span>
-<span class="o">&lt;</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">&gt;</span> <span class="n">REMOTE_MODULE</span> <span class="n">git</span> <span class="n">version</span><span class="o">=</span><span class="n">master</span>
-                          <span class="n">dest</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span> 
-                          <span class="n">repo</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">chapmanb</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">.</span><span class="n">git</span>
-<span class="n">changed</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ ________________________________________________________
+&lt; TASK: bcbio_vm_build | Clone bcbio-nextgen from GitHub &gt;
+ --------------------------------------------------------
+&lt;127.0.0.1&gt; REMOTE_MODULE git version=master
+                          dest=/tmp/bcbio-nextgen 
+                          repo=https://github.com/chapmanb/bcbio-nextgen.git
+changed: [127.0.0.1]
 
- <span class="n">______________________________________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">set_fact</span>              \
-\ <span class="n">image_name</span><span class="o">=</span><span class="n">chapmanb</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">work</span> <span class="o">/</span>
- <span class="o">----------------------------------------------</span>
-<span class="n">ok</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ ______________________________________________
+/ TASK: bcbio_vm_build | set_fact              \
+\ image_name=chapmanb/bcbio-nextgen-devel-work /
+ ----------------------------------------------
+ok: [127.0.0.1]
 
- <span class="n">_________________________________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">set_fact</span>         \
-\ <span class="n">image_name</span><span class="o">=</span><span class="n">chapmanb</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">-</span><span class="n">devel</span> <span class="o">/</span>
- <span class="o">-----------------------------------------</span>
-<span class="n">skipping</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ _________________________________________
+/ TASK: bcbio_vm_build | set_fact         \
+\ image_name=chapmanb/bcbio-nextgen-devel /
+ -----------------------------------------
+skipping: [127.0.0.1]
 
- <span class="n">____________________________________________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">Update</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">bcbio</span> <span class="n">docker</span> \
-\ <span class="n">container</span>                                          <span class="o">/</span>
- <span class="o">----------------------------------------------------</span>
-<span class="n">skipping</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ ____________________________________________________
+/ TASK: bcbio_vm_build | Update code in bcbio docker \
+\ container                                          /
+ ----------------------------------------------------
+skipping: [127.0.0.1]
 
- <span class="n">__________________________________________________________</span>
-<span class="o">&lt;</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">Build</span> <span class="n">full</span> <span class="n">bcbio</span> <span class="n">docker</span> <span class="n">container</span> <span class="o">&gt;</span>
- <span class="o">----------------------------------------------------------</span>
-<span class="o">&lt;</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">&gt;</span> <span class="n">REMOTE_MODULE</span> <span class="n">async_status</span> <span class="n">jid</span><span class="o">=</span><span class="mf">432667395995.21107</span>
-<span class="n">changed</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
-<span class="o">&lt;</span><span class="n">job</span> <span class="mf">432667395995.21107</span><span class="o">&gt;</span> <span class="n">finished</span> <span class="n">on</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
+ __________________________________________________________
+&lt; TASK: bcbio_vm_build | Build full bcbio docker container &gt;
+ ----------------------------------------------------------
+&lt;127.0.0.1&gt; REMOTE_MODULE async_status jid=432667395995.21107
+changed: [127.0.0.1]
+&lt;job 432667395995.21107&gt; finished on 127.0.0.1
 
- <span class="n">__________________________________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">command</span> <span class="n">tail</span> <span class="o">-</span><span class="mi">100</span> \
-\ <span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">log</span>                  <span class="o">/</span>
- <span class="o">------------------------------------------</span>
-<span class="o">&lt;</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">&gt;</span> <span class="n">REMOTE_MODULE</span> <span class="n">command</span> <span class="n">tail</span> <span class="o">-</span><span class="mi">100</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">/</span><span class="n">build</span><span class="o">.</span><span class="n">log</span>
-<span class="n">changed</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+ __________________________________________
+/ TASK: bcbio_vm_build | command tail -100 \
+\ /build.log                  /
+ ------------------------------------------
+&lt;127.0.0.1&gt; REMOTE_MODULE command tail -100 /tmp/bcbio-nextgen/build.log
+changed: [127.0.0.1]
 
- <span class="n">_____________________________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">debug</span>        \
-\ <span class="n">var</span><span class="o">=</span><span class="n">bcbio_docker_debug</span><span class="o">.</span><span class="n">stdout_lines</span> <span class="o">/</span>
- <span class="o">-------------------------------------</span>
-<span class="n">ok</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="s">&quot;var&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;bcbio_docker_debug.stdout_lines&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s">&quot;Sending build context to Docker daemon 557.1 kB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 1.114 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 1.671 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 2.228 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 2.785 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 3.342 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 3.899 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 4.456 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 5.014 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 5.571 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 6.128 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 6.685 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 7.242 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 7.799 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 8.356 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 8.913 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  9.47 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 10.03 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 10.58 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 11.14 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  11.7 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 12.26 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 12.81 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 13.37 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 13.93 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 14.48 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 15.04 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  15.6 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 16.15 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 16.71 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 17.27 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 17.83 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 18.38 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 18.94 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  19.5 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 20.05 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 20.61 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 21.17 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 21.73 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 22.28 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 22.84 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  23.4 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 23.95 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 24.48 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 25.01 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 25.53 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 26.06 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  26.6 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 27.13 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 27.69 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 28.25 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  28.8 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 29.36 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 29.92 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 30.47 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 31.03 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 31.59 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 32.15 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  32.7 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 33.26 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 33.82 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 34.37 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 34.93 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 35.49 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 36.04 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  36.6 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 37.16 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 37.72 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 38.27 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 38.83 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 39.39 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 39.94 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  40.5 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 41.06 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 41.62 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 42.17 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 42.73 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 43.29 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 43.84 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon  44.4 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 44.96 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 45.51 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 46.07 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 46.63 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 46.93 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Sending build context to Docker daemon 46.93 MB&quot;</span><span class="p">,</span>
-            <span class="s">&quot;&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Step 1 : FROM stackbrew/ubuntu:14.04&quot;</span><span class="p">,</span>
-            <span class="s">&quot; ---&gt; 1d073211c498&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Step 2 : MAINTAINER Brad Chapman </span><span class="se">\&quot;</span><span class="s">https://github.com/chapmanb</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span>
-            <span class="s">&quot; ---&gt; Using cache&quot;</span><span class="p">,</span>
-            <span class="s">&quot; ---&gt; 78f8b74a3cfc&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Step 3 : RUN apt-get update &amp;&amp; apt-get install -y build-essential zlib1g-dev wget curl python-setuptools git &amp;&amp;     apt-get install -y openjdk-7-jdk openjdk-7-jre ruby libncurses5-dev libcurl4-openssl-dev libbz2-dev     unzip pigz bsdmainutils &amp;&amp;     mkdir -p /tmp/fuse-hack &amp;&amp; cd /tmp/fuse-hack &amp;&amp;     apt-get install libfuse2 &amp;&amp;     apt-get download fuse &amp;&amp;     dpkg-deb -x fuse_* . &amp;&amp;     dpkg-deb -e fuse_* &amp;&amp;     rm fuse_*.deb &amp;&amp;     echo -en &#39;#!/bin/bash</span><span class="se">\\</span><span class="s">nexit 0</span><span class="se">\\</span><span class="s">n&#39; &gt; DEBIAN/postinst &amp;&amp;     dpkg-deb -b . /fuse.deb &amp;&amp;     dpkg -i /fuse.deb &amp;&amp;     rm -rf /tmp/fuse-hack &amp;&amp;     mkdir -p /tmp/bcbio-nextgen-install &amp;&amp; cd /tmp/bcbio-nextgen-install &amp;&amp;     wget --no-check-certificate       https://raw.github.com/chapmanb/bcbio-nextgen/master/scripts/bcbio_nextgen_install.py &amp;&amp;     python bcbio_nextgen_install.py /usr/local/share/bcbio-nextgen       --nodata -u development &amp;&amp;     git config --global url.https://github.com/.insteadOf git://github.com/ &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/bcbio_nextgen.py upgrade --isolate -u development --tools --toolplus data  &amp;&amp;     echo &#39;export PATH=/usr/local/bin:$PATH&#39; &gt;&gt; /etc/profile.d/bcbio.sh &amp;&amp;     wget --no-check-certificate -O createsetuser       https://raw.github.com/chapmanb/bcbio-nextgen-vm/master/scripts/createsetuser &amp;&amp;     chmod a+x createsetuser &amp;&amp; mv createsetuser /sbin &amp;&amp;     apt-get clean &amp;&amp;     rm -rf /var/lib/apt/lists/* /var/tmp/* &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/conda remove --yes qt &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/conda clean --yes --tarballs &amp;&amp;     rm -rf /usr/local/share/bcbio-nextgen/anaconda/pkgs/qt* &amp;&amp;     rm -rf $(brew --cache) &amp;&amp;     rm -rf /usr/local/.git &amp;&amp;     rm -rf /.cpanm &amp;&amp;     rm -rf /tmp/bcbio-nextgen-install &amp;&amp;     mkdir -p /mnt/biodata &amp;&amp;     mkdir -p /tmp/bcbio-nextgen &amp;&amp;     mv /usr/local/share/bcbio-nextgen/galaxy/bcbio_system.yaml /usr/local/share/bcbio-nextgen/config &amp;&amp;     rmdir /usr/local/share/bcbio-nextgen/galaxy &amp;&amp;     ln -s /mnt/biodata/galaxy /usr/local/share/bcbio-nextgen/galaxy &amp;&amp;     ln -s /mnt/biodata/gemini_data /usr/local/share/bcbio-nextgen/gemini_data &amp;&amp;     ln -s /mnt/biodata/genomes /usr/local/share/bcbio-nextgen/genomes &amp;&amp;     ln -s /mnt/biodata/liftOver /usr/local/share/bcbio-nextgen/liftOver &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/config &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/config/*.yaml &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/gemini-config.yaml &amp;&amp;     find /usr/local -perm /u+x -execdir chmod a+x {} </span><span class="se">\\</span><span class="s">; &amp;&amp;     find /usr/local -perm /u+w -execdir chmod a+w {} </span><span class="se">\\</span><span class="s">;&quot;</span><span class="p">,</span>
-            <span class="s">&quot; ---&gt; Using cache&quot;</span><span class="p">,</span>
-            <span class="s">&quot; ---&gt; 77a2d9ee7d3f&quot;</span><span class="p">,</span>
-            <span class="s">&quot;Successfully built 77a2d9ee7d3f&quot;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+ _____________________________________
+/ TASK: bcbio_vm_build | debug        \
+\ var=bcbio_docker_debug.stdout_lines /
+ -------------------------------------
+ok: [127.0.0.1] =&gt; {
+    &quot;var&quot;: {
+        &quot;bcbio_docker_debug.stdout_lines&quot;: [
+            &quot;Sending build context to Docker daemon 557.1 kB&quot;,
+            &quot;Sending build context to Docker daemon 1.114 MB&quot;,
+            &quot;Sending build context to Docker daemon 1.671 MB&quot;,
+            &quot;Sending build context to Docker daemon 2.228 MB&quot;,
+            &quot;Sending build context to Docker daemon 2.785 MB&quot;,
+            &quot;Sending build context to Docker daemon 3.342 MB&quot;,
+            &quot;Sending build context to Docker daemon 3.899 MB&quot;,
+            &quot;Sending build context to Docker daemon 4.456 MB&quot;,
+            &quot;Sending build context to Docker daemon 5.014 MB&quot;,
+            &quot;Sending build context to Docker daemon 5.571 MB&quot;,
+            &quot;Sending build context to Docker daemon 6.128 MB&quot;,
+            &quot;Sending build context to Docker daemon 6.685 MB&quot;,
+            &quot;Sending build context to Docker daemon 7.242 MB&quot;,
+            &quot;Sending build context to Docker daemon 7.799 MB&quot;,
+            &quot;Sending build context to Docker daemon 8.356 MB&quot;,
+            &quot;Sending build context to Docker daemon 8.913 MB&quot;,
+            &quot;Sending build context to Docker daemon  9.47 MB&quot;,
+            &quot;Sending build context to Docker daemon 10.03 MB&quot;,
+            &quot;Sending build context to Docker daemon 10.58 MB&quot;,
+            &quot;Sending build context to Docker daemon 11.14 MB&quot;,
+            &quot;Sending build context to Docker daemon  11.7 MB&quot;,
+            &quot;Sending build context to Docker daemon 12.26 MB&quot;,
+            &quot;Sending build context to Docker daemon 12.81 MB&quot;,
+            &quot;Sending build context to Docker daemon 13.37 MB&quot;,
+            &quot;Sending build context to Docker daemon 13.93 MB&quot;,
+            &quot;Sending build context to Docker daemon 14.48 MB&quot;,
+            &quot;Sending build context to Docker daemon 15.04 MB&quot;,
+            &quot;Sending build context to Docker daemon  15.6 MB&quot;,
+            &quot;Sending build context to Docker daemon 16.15 MB&quot;,
+            &quot;Sending build context to Docker daemon 16.71 MB&quot;,
+            &quot;Sending build context to Docker daemon 17.27 MB&quot;,
+            &quot;Sending build context to Docker daemon 17.83 MB&quot;,
+            &quot;Sending build context to Docker daemon 18.38 MB&quot;,
+            &quot;Sending build context to Docker daemon 18.94 MB&quot;,
+            &quot;Sending build context to Docker daemon  19.5 MB&quot;,
+            &quot;Sending build context to Docker daemon 20.05 MB&quot;,
+            &quot;Sending build context to Docker daemon 20.61 MB&quot;,
+            &quot;Sending build context to Docker daemon 21.17 MB&quot;,
+            &quot;Sending build context to Docker daemon 21.73 MB&quot;,
+            &quot;Sending build context to Docker daemon 22.28 MB&quot;,
+            &quot;Sending build context to Docker daemon 22.84 MB&quot;,
+            &quot;Sending build context to Docker daemon  23.4 MB&quot;,
+            &quot;Sending build context to Docker daemon 23.95 MB&quot;,
+            &quot;Sending build context to Docker daemon 24.48 MB&quot;,
+            &quot;Sending build context to Docker daemon 25.01 MB&quot;,
+            &quot;Sending build context to Docker daemon 25.53 MB&quot;,
+            &quot;Sending build context to Docker daemon 26.06 MB&quot;,
+            &quot;Sending build context to Docker daemon  26.6 MB&quot;,
+            &quot;Sending build context to Docker daemon 27.13 MB&quot;,
+            &quot;Sending build context to Docker daemon 27.69 MB&quot;,
+            &quot;Sending build context to Docker daemon 28.25 MB&quot;,
+            &quot;Sending build context to Docker daemon  28.8 MB&quot;,
+            &quot;Sending build context to Docker daemon 29.36 MB&quot;,
+            &quot;Sending build context to Docker daemon 29.92 MB&quot;,
+            &quot;Sending build context to Docker daemon 30.47 MB&quot;,
+            &quot;Sending build context to Docker daemon 31.03 MB&quot;,
+            &quot;Sending build context to Docker daemon 31.59 MB&quot;,
+            &quot;Sending build context to Docker daemon 32.15 MB&quot;,
+            &quot;Sending build context to Docker daemon  32.7 MB&quot;,
+            &quot;Sending build context to Docker daemon 33.26 MB&quot;,
+            &quot;Sending build context to Docker daemon 33.82 MB&quot;,
+            &quot;Sending build context to Docker daemon 34.37 MB&quot;,
+            &quot;Sending build context to Docker daemon 34.93 MB&quot;,
+            &quot;Sending build context to Docker daemon 35.49 MB&quot;,
+            &quot;Sending build context to Docker daemon 36.04 MB&quot;,
+            &quot;Sending build context to Docker daemon  36.6 MB&quot;,
+            &quot;Sending build context to Docker daemon 37.16 MB&quot;,
+            &quot;Sending build context to Docker daemon 37.72 MB&quot;,
+            &quot;Sending build context to Docker daemon 38.27 MB&quot;,
+            &quot;Sending build context to Docker daemon 38.83 MB&quot;,
+            &quot;Sending build context to Docker daemon 39.39 MB&quot;,
+            &quot;Sending build context to Docker daemon 39.94 MB&quot;,
+            &quot;Sending build context to Docker daemon  40.5 MB&quot;,
+            &quot;Sending build context to Docker daemon 41.06 MB&quot;,
+            &quot;Sending build context to Docker daemon 41.62 MB&quot;,
+            &quot;Sending build context to Docker daemon 42.17 MB&quot;,
+            &quot;Sending build context to Docker daemon 42.73 MB&quot;,
+            &quot;Sending build context to Docker daemon 43.29 MB&quot;,
+            &quot;Sending build context to Docker daemon 43.84 MB&quot;,
+            &quot;Sending build context to Docker daemon  44.4 MB&quot;,
+            &quot;Sending build context to Docker daemon 44.96 MB&quot;,
+            &quot;Sending build context to Docker daemon 45.51 MB&quot;,
+            &quot;Sending build context to Docker daemon 46.07 MB&quot;,
+            &quot;Sending build context to Docker daemon 46.63 MB&quot;,
+            &quot;Sending build context to Docker daemon 46.93 MB&quot;,
+            &quot;Sending build context to Docker daemon 46.93 MB&quot;,
+            &quot;&quot;,
+            &quot;Step 1 : FROM stackbrew/ubuntu:14.04&quot;,
+            &quot; ---&gt; 1d073211c498&quot;,
+            &quot;Step 2 : MAINTAINER Brad Chapman \&quot;https://github.com/chapmanb\&quot;&quot;,
+            &quot; ---&gt; Using cache&quot;,
+            &quot; ---&gt; 78f8b74a3cfc&quot;,
+            &quot;Step 3 : RUN apt-get update &amp;&amp; apt-get install -y build-essential zlib1g-dev wget curl python-setuptools git &amp;&amp;     apt-get install -y openjdk-7-jdk openjdk-7-jre ruby libncurses5-dev libcurl4-openssl-dev libbz2-dev     unzip pigz bsdmainutils &amp;&amp;     mkdir -p /tmp/fuse-hack &amp;&amp; cd /tmp/fuse-hack &amp;&amp;     apt-get install libfuse2 &amp;&amp;     apt-get download fuse &amp;&amp;     dpkg-deb -x fuse_* . &amp;&amp;     dpkg-deb -e fuse_* &amp;&amp;     rm fuse_*.deb &amp;&amp;     echo -en &#39;#!/bin/bash\\nexit 0\\n&#39; &gt; DEBIAN/postinst &amp;&amp;     dpkg-deb -b . /fuse.deb &amp;&amp;     dpkg -i /fuse.deb &amp;&amp;     rm -rf /tmp/fuse-hack &amp;&amp;     mkdir -p /tmp/bcbio-nextgen-install &amp;&amp; cd /tmp/bcbio-nextgen-install &amp;&amp;     wget --no-check-certificate       https://raw.github.com/chapmanb/bcbio-nextgen/master/scripts/bcbio_nextgen_install.py &amp;&amp;     python bcbio_nextgen_install.py /usr/local/share/bcbio-nextgen       --nodata -u development &amp;&amp;     git config --global url.https://github.com/.insteadOf git://github.com/ &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/bcbio_nextgen.py upgrade --isolate -u development --tools --toolplus data  &amp;&amp;     echo &#39;export PATH=/usr/local/bin:$PATH&#39; &gt;&gt; /etc/profile.d/bcbio.sh &amp;&amp;     wget --no-check-certificate -O createsetuser       https://raw.github.com/chapmanb/bcbio-nextgen-vm/master/scripts/createsetuser &amp;&amp;     chmod a+x createsetuser &amp;&amp; mv createsetuser /sbin &amp;&amp;     apt-get clean &amp;&amp;     rm -rf /var/lib/apt/lists/* /var/tmp/* &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/conda remove --yes qt &amp;&amp;     /usr/local/share/bcbio-nextgen/anaconda/bin/conda clean --yes --tarballs &amp;&amp;     rm -rf /usr/local/share/bcbio-nextgen/anaconda/pkgs/qt* &amp;&amp;     rm -rf $(brew --cache) &amp;&amp;     rm -rf /usr/local/.git &amp;&amp;     rm -rf /.cpanm &amp;&amp;     rm -rf /tmp/bcbio-nextgen-install &amp;&amp;     mkdir -p /mnt/biodata &amp;&amp;     mkdir -p /tmp/bcbio-nextgen &amp;&amp;     mv /usr/local/share/bcbio-nextgen/galaxy/bcbio_system.yaml /usr/local/share/bcbio-nextgen/config &amp;&amp;     rmdir /usr/local/share/bcbio-nextgen/galaxy &amp;&amp;     ln -s /mnt/biodata/galaxy /usr/local/share/bcbio-nextgen/galaxy &amp;&amp;     ln -s /mnt/biodata/gemini_data /usr/local/share/bcbio-nextgen/gemini_data &amp;&amp;     ln -s /mnt/biodata/genomes /usr/local/share/bcbio-nextgen/genomes &amp;&amp;     ln -s /mnt/biodata/liftOver /usr/local/share/bcbio-nextgen/liftOver &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/config &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/config/*.yaml &amp;&amp;     chmod a+rwx /usr/local/share/bcbio-nextgen/gemini-config.yaml &amp;&amp;     find /usr/local -perm /u+x -execdir chmod a+x {} \\; &amp;&amp;     find /usr/local -perm /u+w -execdir chmod a+w {} \\;&quot;,
+            &quot; ---&gt; Using cache&quot;,
+            &quot; ---&gt; 77a2d9ee7d3f&quot;,
+            &quot;Successfully built 77a2d9ee7d3f&quot;
+        ]
+    }
+}
 
-<span class="n">_______________________</span>
-<span class="o">/</span> <span class="n">TASK</span><span class="p">:</span> <span class="n">bcbio_vm_build</span> <span class="o">|</span> <span class="n">Create</span> <span class="n">gzipped</span> <span class="n">bcbio</span> <span class="n">docker</span> \
-\ <span class="n">container</span>                                          <span class="o">/</span>
- <span class="o">----------------------------------------------------</span>
-<span class="o">&lt;</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">&gt;</span> <span class="n">REMOTE_MODULE</span> <span class="n">command</span>
-    <span class="n">chdir</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span>
-    <span class="n">creates</span><span class="o">=</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">gz</span>
-    <span class="n">DID</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="n">chapmanb</span><span class="o">/</span><span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">work</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span><span class="p">)</span>
-    <span class="n">docker</span> <span class="n">export</span> <span class="err">$</span><span class="n">DID</span> <span class="o">|</span> <span class="n">gzip</span> <span class="o">-</span><span class="n">c</span> <span class="o">&gt;</span> <span class="n">bcbio</span><span class="o">-</span><span class="n">nextgen</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">gz</span>
-    <span class="c">#USE_SHELL</span>
-<span class="n">changed</span><span class="p">:</span> <span class="p">[</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">]</span>
+_______________________
+/ TASK: bcbio_vm_build | Create gzipped bcbio docker \
+\ container                                          /
+ ----------------------------------------------------
+&lt;127.0.0.1&gt; REMOTE_MODULE command
+    chdir=/tmp/bcbio-nextgen
+    creates=bcbio-nextgen-docker-image.gz
+    DID=$(docker run -d chapmanb/bcbio-nextgen-devel-work /bin/bash)
+    docker export $DID | gzip -c &gt; bcbio-nextgen-docker-image.gz
+    #USE_SHELL
+changed: [127.0.0.1]
 </code></pre></div>
 <h3 id="create-and-upload-a-docker-image">Create and upload a docker image</h3>
 
