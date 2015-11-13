@@ -93,7 +93,7 @@ ERROR:gc3.elasticluster:async operation failed: The server encountered an intern
 ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 6 of 50): async operation failed: The server encountered an internal error. Please retry the request.
 </code></pre></div>
 <h3 id="bcbio-pickle-not-found">bcbio.pickle not found</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">! $ bcbio_vm.py azure cluster stop --cluster bcbio
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure cluster stop --cluster bcbio
 </code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[DEBUG]: Run elasticluster command: [&#39;elasticluster&#39;, &#39;--storage&#39;, &#39;/home/alex/.bcbio/elasticluster/storage&#39;, &#39;--config&#39;, &#39;/home/alex/.bcbio/elasticluster/azure.config&#39;, &#39;stop&#39;, &#39;bcbio&#39;]
 [ERROR]: gc3.elasticluster:Stopping cluster bcbio: Storage file /home/alex/.bcbio/elasticluster/storage/bcbio.pickle not found
 
@@ -107,9 +107,9 @@ bcbiovm.client.base - [INFO]: Execution of command Stop ends with success. (0)
 
 <h4 id="delete-all-the-bcbio_vm-virtual-machines">Delete all the bcbio_vm*** virtual machines**</h4>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"></p>
+<p>-&gt; <img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"> &lt;-</p>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"></p>
+<p>-&gt; <img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"> &lt;-</p>
 
 <h4 id="delete-the-storage-account">Delete the Storage Account</h4>
 
@@ -168,72 +168,72 @@ TypeError: expected string or buffer
 <p>Information related to keys from <a href="https://github.com/chapmanb/elasticluster/blob/bcbio/README-AZURE.rst">Elasticluster for Azure documentation</a>:</p>
 
 <p>6. You&#39;ll need a keypair to access the virtual machines during provisioning, and later via ssh. For now, you should create a private key file that matches your management cert, like this:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>openssl rsa -in managementCert.pem -out managementCert.key
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">  ~ <span class="nv">$ </span>openssl rsa -in managementCert.pem -out managementCert.key
 </code></pre></div>
 <p>SSH is picky about ownership/permissions on key files. Make sure that yours look like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $  ls -l ~/.ssh
-[...]
--rw------- 1 my_user_name my_user_name  797 May  3 18:00 managementCert.cer
+<div class="highlight"><pre><code class="language-text" data-lang="text">  ~ $  ls -l ~/.ssh
+  [...]
+  -rw------- 1 my_user_name my_user_name  797 May  3 18:00 managementCert.cer
 </code></pre></div>
 <p>Use these commands if needed on the .pem, .cer, and .key files:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># replace &#39;my_user_name&#39; with your username - you knew that</span>
-~ <span class="nv">$ </span>sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
-~ <span class="nv">$ </span>sudo chmod <span class="m">600</span> ~/.ssh/managementCert.pem
-<span class="c"># make sure you do this to all 3 files!</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">  <span class="c"># replace &#39;my_user_name&#39; with your username - you knew that</span>
+  ~ <span class="nv">$ </span>sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
+  ~ <span class="nv">$ </span>sudo chmod <span class="m">600</span> ~/.ssh/managementCert.pem
+  <span class="c"># make sure you do this to all 3 files!</span>
 </code></pre></div>
 <p>(<strong>Note</strong>:  access to a specific virtual machine using a keypair that is not also an Azure management keypair doesn&#39;t work at present, but is an open work item.)</p>
 
-<p><strong>Step1</strong> Replace <code>~/.ssh</code> with <code>/home/user/.ssh</code></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[cloud/azure-cloud]
-provider = azure
-subscription_id = [secret]
-certificate = /home/alex/.ssh/managementCert.pem
+<h4 id="step1-replace-ssh-with-home-user-ssh">Step1. Replace <code>~/.ssh</code> with <code>/home/user/.ssh</code></h4>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[cloud/azure-cloud]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">azure</span>
+<span class="na">subscription_id</span> <span class="o">=</span> <span class="s">[secret]</span>
+<span class="na">certificate</span> <span class="o">=</span> <span class="s">/home/alex/.ssh/managementCert.pem</span>
 
-[login/azure-login]
-image_user = ubuntu
-image_user_sudo = root
-image_sudo = True
-user_key_name = az_ec_key
-user_key_private = /home/alex/.ssh/managementCert.key
-user_key_public = /home/alex/.ssh/managementCert.pem
+<span class="k">[login/azure-login]</span>
+<span class="na">image_user</span> <span class="o">=</span> <span class="s">ubuntu</span>
+<span class="na">image_user_sudo</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">image_sudo</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">user_key_name</span> <span class="o">=</span> <span class="s">az_ec_key</span>
+<span class="na">user_key_private</span> <span class="o">=</span> <span class="s">/home/alex/.ssh/managementCert.key</span>
+<span class="na">user_key_public</span> <span class="o">=</span> <span class="s">/home/alex/.ssh/managementCert.pem</span>
 
-[setup/ansible]
-provider = ansible
-frontend_groups = common
-compute_groups = clients
+<span class="k">[setup/ansible]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">ansible</span>
+<span class="na">frontend_groups</span> <span class="o">=</span> <span class="s">common</span>
+<span class="na">compute_groups</span> <span class="o">=</span> <span class="s">clients</span>
 
-[setup/ansible-slurm]
-provider = ansible
-frontend_groups = slurm_master
-compute_groups = slurm_clients
-global_var_slurm_selecttype = select/cons_res
-global_var_slurm_selecttypeparameters = CR_Core_Memory
+<span class="k">[setup/ansible-slurm]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">ansible</span>
+<span class="na">frontend_groups</span> <span class="o">=</span> <span class="s">slurm_master</span>
+<span class="na">compute_groups</span> <span class="o">=</span> <span class="s">slurm_clients</span>
+<span class="na">global_var_slurm_selecttype</span> <span class="o">=</span> <span class="s">select/cons_res</span>
+<span class="na">global_var_slurm_selecttypeparameters</span> <span class="o">=</span> <span class="s">CR_Core_Memory</span>
 
-[cluster/bcbio]
-cloud = azure-cloud
-login = azure-login
-ssh_to = frontend
-ssh_hostkeys_from_console_output = True
-security_group = default
-setup_provider = ansible-slurm
-frontend_nodes = 1
-compute_nodes = 3
-image_id = b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140414-en-us-30GB
-root_volume_size = 20
-flavor = Small
-location = East US
-wait_timeout = 600
-base_name = bcbio
-global_var_ansible_ssh_host_key_dsa_public = &#39;&#39;
+<span class="k">[cluster/bcbio]</span>
+<span class="na">cloud</span> <span class="o">=</span> <span class="s">azure-cloud</span>
+<span class="na">login</span> <span class="o">=</span> <span class="s">azure-login</span>
+<span class="na">ssh_to</span> <span class="o">=</span> <span class="s">frontend</span>
+<span class="na">ssh_hostkeys_from_console_output</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">security_group</span> <span class="o">=</span> <span class="s">default</span>
+<span class="na">setup_provider</span> <span class="o">=</span> <span class="s">ansible-slurm</span>
+<span class="na">frontend_nodes</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">compute_nodes</span> <span class="o">=</span> <span class="s">3</span>
+<span class="na">image_id</span> <span class="o">=</span> <span class="s">b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140414-en-us-30GB</span>
+<span class="na">root_volume_size</span> <span class="o">=</span> <span class="s">20</span>
+<span class="na">flavor</span> <span class="o">=</span> <span class="s">Small</span>
+<span class="na">location</span> <span class="o">=</span> <span class="s">East US</span>
+<span class="na">wait_timeout</span> <span class="o">=</span> <span class="s">600</span>
+<span class="na">base_name</span> <span class="o">=</span> <span class="s">bcbio</span>
+<span class="na">global_var_ansible_ssh_host_key_dsa_public</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
 
-[cluster/bcbio/frontend]
-flavor = Small
-encrypted_volume_size = 20
-encrypted_volume_type = io1
-encrypted_volume_iops = 600
+<span class="k">[cluster/bcbio/frontend]</span>
+<span class="na">flavor</span> <span class="o">=</span> <span class="s">Small</span>
+<span class="na">encrypted_volume_size</span> <span class="o">=</span> <span class="s">20</span>
+<span class="na">encrypted_volume_type</span> <span class="o">=</span> <span class="s">io1</span>
+<span class="na">encrypted_volume_iops</span> <span class="o">=</span> <span class="s">600</span>
 </code></pre></div>
-<p><strong>Step2</strong> Check keys permissions in <code>/home/user/.ssh</code></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ ls -la
+<h4 id="step2-check-keys-permissions-in-home-user-ssh">Step2. Check keys permissions in <code>/home/user/.ssh</code></h4>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>ls -la
 </code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">total 116
 drwx------  3 alex alex  4096 Nov  7 13:55 .
 drwx------ 87 alex alex 20480 Nov 13 15:45 ..
@@ -245,10 +245,10 @@ drwx------  2 alex alex  4096 Apr  6  2015 keys
 -rw-------  1 alex alex  1675 Oct 26 15:39 managementCert.key
 -rw-------  1 alex alex  3099 Oct 26 15:00 managementCert.pem
 </code></pre></div>
-<p><strong>Step3</strong> Update keys permissions</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">~ $ chmod 600 managementCert.cer
-~ $ chmod 600 managementCert.key
-~ $ chmod 600 managementCert.pem
+<h4 id="step3-update-keys-permissions">Step3. Update keys permissions</h4>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>chmod <span class="m">600</span> managementCert.cer
+~ <span class="nv">$ </span>chmod <span class="m">600</span> managementCert.key
+~ <span class="nv">$ </span>chmod <span class="m">600</span> managementCert.pem
 </code></pre></div>
 <p><strong>Note</strong>: For the current issue doesn&#39;t exist a fix yet.</p>
 
