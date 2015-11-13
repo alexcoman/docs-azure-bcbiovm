@@ -31,3 +31,10 @@ More information can be found [here](https://bcbio-nextgen.readthedocs.org/en/la
     - V.1. [Create the elasticluster configuration file](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#create-the-elasticluster-configuration-file)
     - V.2. [Edit the elasticluster configuration file](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#edit-the-elasticluster-configuration-file)
     - V.3. [Set the subscription_id](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#set-the-subscriptionid)
+
+###Troubleshooting
+
+I. [Troubleshooting - Elasticluster](https://alexandrucoman.github.io/docs-azure-bcbiovm/troubleshooting/elasticluster.html)
+    -I.1. [The server encountered an internal error](https://alexandrucoman.github.io/docs-azure-bcbiovm/troubleshooting/elasticluster.html#the-server-encountered-an-internal-error)
+    -I.2. [bcbio.pickle not found](https://alexandrucoman.github.io/docs-azure-bcbiovm/troubleshooting/elasticluster.html#bcbiopickle-not-found)
+    -I.3. [TypeError: expected string or buffer](https://alexandrucoman.github.io/docs-azure-bcbiovm/troubleshooting/elasticluster.html#typeerror-expected-string-or-buffer)
