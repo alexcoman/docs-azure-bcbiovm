@@ -86,28 +86,3 @@ The output for this command:
 [INFO] Execution of command PrivateKey ends with success. (None)
 [INFO] The private key was successfully generated.
 ```
-
-###Create the elasticluster configuration file
-
-Write Elasticluster configuration file with user information.
-
-```
-usage: bcbio_vm.py azure prepare ec-config [-h] [--econfig ECONFIG]
-
-optional arguments:
-  -h, --help         show this help message and exit
-  --econfig ECONFIG  Elasticluster bcbio configuration file
-```
-
-We will use the default values.
-
-```bash
-~ $ bcbio_vm.py azure prepare ec-config
-```
-
-The output for this command.
-
-```
-[INFO] Execution of command ECConfig ends with success. (None)
-[INFO] The elasticluster config was successfully generated.
-```

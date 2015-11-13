@@ -27,4 +27,7 @@ More information can be found [here](https://bcbio-nextgen.readthedocs.org/en/la
     - IV.1. [Generate a new management certificate](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/setup-azure-environment.html#generate-a-new-management-certificate)
     - IV.2. [Uploading managementCert.cer file to Windows Azure](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/setup-azure-environment.html#uploading-managementcertcer-file-to-windows-azure)
     - IV.3. [Generate the private key](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/setup-azure-environment.html#generate-the-private-key)
-    - IV.4. [Create the elasticluster configuration file](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/setup-azure-environment.html#create-the-elasticluster-configuration-file)
+- V. [bcbio cluster on Windows Azure](doc/bcbio-cluster.html)
+    - V.1. [Create the elasticluster configuration file](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#create-the-elasticluster-configuration-file)
+    - V.2. [Edit the elasticluster configuration file](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#edit-the-elasticluster-configuration-file)
+    - V.3. [Set the subscription_id](https://alexandrucoman.github.io/docs-azure-bcbiovm/doc/bcbio-cluster.html#set-the-subscriptionid)
