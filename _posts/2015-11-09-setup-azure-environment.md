@@ -55,7 +55,7 @@ Once you have the **managementCert.cer** file which contains the public key, you
 
 On the Management Certificates page, you can select the Upload action from the command bar at the bottom of the screen. It will prompt you for the .cer file you created which contains the public key for the certificate. Click on the little folder icon and locate the .cer file you created. If you have more than one subscription you may also see a drop-down with your subscriptions listed. If so, select the subscription you want to relate the certificate to. Finally, click the check mark to complete the upload.
 
-![Management Certificates / Upload]({{ site.production_url }}/assets/upload-management-cer-2.png)
+![Management Certificates / Upload]({{ site.production_url }}/assets/upload-management-cer-2.png){: .center-image }
 
 Within a few seconds the upload will complete and you will see the certificate in your list. If you wish to relate the same certificate to multiple subscriptions just repeat the steps above for each subscription. Note that relating the same certificate to multiple subscriptions is convenient, but somewhat like using the same password for multiple accounts. If someone gets a hold of the private portion of the certificate they would have access to all of the subscriptions.
 

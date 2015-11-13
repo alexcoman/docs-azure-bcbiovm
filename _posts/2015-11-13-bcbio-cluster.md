@@ -105,7 +105,7 @@ encrypted_volume_iops = 600
 
 In order to get the `subscription_id` it will require to open a browser and go to the portal: [manage.windowsazure.com](https://manage.windowsazure.com). Once you sign in, select the Settings tab on the far bottom of the left side of the portal, then click on Subscriptions.
 
-![Settings / Subscriptions]({{ site.production_url }}/assets/windows-azure-subscriptions.png)
+![Settings / Subscriptions]({{ site.production_url }}/assets/windows-azure-subscriptions.png){: .center-image }
 
 ```bash
 ~ $ vim ~/.bcbio/elasticluster/azure.config

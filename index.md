@@ -36,3 +36,10 @@ More information can be found [here](https://bcbio-nextgen.readthedocs.org/en/la
     - V.1. [Create the elasticluster configuration file](doc/bcbio-cluster.html#create-the-elasticluster-configuration-file)
     - V.2. [Edit the elasticluster configuration file](doc/bcbio-cluster.html#edit-the-elasticluster-configuration-file)
     - V.3. [Set the subscription_id](doc/bcbio-cluster.html#set-the-subscriptionid)
+
+###Troubleshooting
+
+- I. [Troubleshooting - Elasticluster](troubleshooting/elasticluster.html)
+    - I.1. [The server encountered an internal error](troubleshooting/elasticluster.html#the-server-encountered-an-internal-error)
+    - I.2. [bcbio.pickle not found](troubleshooting/elasticluster.html#bcbiopickle-not-found)
+    - I.3. [TypeError: expected string or buffer](troubleshooting/elasticluster.html#typeerror-expected-string-or-buffer)

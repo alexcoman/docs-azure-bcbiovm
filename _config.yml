@@ -39,6 +39,7 @@ google_analytics_id: ''
 codeurl: 'https://github.com/alexandrucoman/docs-azure-bcbiovm'
 sections: [
     ['doc', 'Documentation'],
+    ['troubleshooting', 'Troubleshooting'],
 ]
 
 # Settings for deploy rake task
