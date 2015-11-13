@@ -77,25 +77,25 @@
 <h2 id="the-server-encountered-an-internal-error">The server encountered an internal error</h2>
 
 <p>The curent version of elasticluster for Azure doesn&#39;t have a friendly error reporting mechanism. If the following errors continue to appear and the attempt number is bigger then 25 is possible to have some misconfigurations in the azure.conf file. </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 1 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">1</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 2 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">2</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 3 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">3</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 4 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">4</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 5 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">5</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 ERROR:gc3.elasticluster:async operation failed: The server encountered an internal error. Please retry the request.
-ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio-compute002 (attempt 6 of 50): async operation failed: The server encountered an internal error. Please retry the request.
+ERROR:gc3.elasticluster:error creating vm bcbio_vm0000_bcbio<span class="p">-</span>compute002 <span class="p">(</span>attempt <span class="m">6</span> of <span class="m">50</span><span class="p">)</span>: async operation failed: The server encountered an internal error. Please retry the request.
 </code></pre></div>
 <h2 id="bcbio-pickle-not-found">bcbio.pickle not found</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure cluster stop --cluster bcbio
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">[DEBUG]: Run elasticluster command: [&#39;elasticluster&#39;, &#39;--storage&#39;, &#39;/home/alex/.bcbio/elasticluster/storage&#39;, &#39;--config&#39;, &#39;/home/alex/.bcbio/elasticluster/azure.config&#39;, &#39;stop&#39;, &#39;bcbio&#39;]
-[ERROR]: gc3.elasticluster:Stopping cluster bcbio: Storage file /home/alex/.bcbio/elasticluster/storage/bcbio.pickle not found
+</code></pre></div><div class="highlight"><pre><code class="language-vim" data-lang="vim">[DEBUG]: Run elasticluster command: [<span class="s1">&#39;elasticluster&#39;</span><span class="p">,</span> <span class="s1">&#39;--storage&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/alex/.bcbio/elasticluster/storage&#39;</span><span class="p">,</span> <span class="s1">&#39;--config&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/alex/.bcbio/elasticluster/azure.config&#39;</span><span class="p">,</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span> <span class="s1">&#39;bcbio&#39;</span>]
+[ERROR]: gc3.elasticluster:Stopping cluster bcbio: Storage <span class="k">file</span> <span class="sr">/home/</span>alex<span class="sr">/.bcbio/</span>elasticluster<span class="sr">/storage/</span>bcbio.pickle not found
 
-bcbiovm.client.base - [INFO]: Execution of command Stop ends with success. (0)
+bcbiovm.client.base <span class="p">-</span> [INFO]: Execution of command Stop ends with success. <span class="p">(</span><span class="m">0</span><span class="p">)</span>
 </code></pre></div>
 <p>The elasticluster failed to cleanup the environment.</p>
 
@@ -122,72 +122,69 @@ bcbiovm.client.base - [INFO]: Execution of command Stop ends with success. (0)
 <p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-virtual-network.png" alt="Delete the Virtual Network">{: .center-image }</p>
 
 <h2 id="typeerror-expected-string-or-buffer">TypeError: expected string or buffer</h2>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INFO</span><span class="p">:</span><span class="n">gc3</span><span class="o">.</span><span class="n">elasticluster</span><span class="p">:</span><span class="n">_start_node</span><span class="p">:</span> <span class="n">node</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span>
-<span class="n">INFO</span><span class="p">:</span><span class="n">gc3</span><span class="o">.</span><span class="n">elasticluster</span><span class="p">:</span><span class="n">_start_node</span><span class="p">:</span> <span class="n">node</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span>
-<span class="n">INFO</span><span class="p">:</span><span class="n">gc3</span><span class="o">.</span><span class="n">elasticluster</span><span class="p">:</span><span class="n">_start_node</span><span class="p">:</span> <span class="n">node</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/bin/bcbio_vm.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">4</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-    <span class="nb">__import__</span><span class="p">(</span><span class="s">&#39;pkg_resources&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="s">&#39;bcbio-nextgen-vm==0.1.0a0&#39;</span><span class="p">,</span> <span class="s">&#39;bcbio_vm.py&#39;</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/setuptools-18.4-py2.7.egg/pkg_resources/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">735</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run_script</span>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">INFO:gc3.elasticluster:_start_node: node has been started
+INFO:gc3.elasticluster:_start_node: node has been started
+INFO:gc3.elasticluster:_start_node: node has been started
+Traceback <span class="p">(</span>most recent <span class="k">call</span> last<span class="p">)</span>:
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/bin/bcbio_vm.py&quot;</span><span class="p">,</span> line <span class="m">4</span><span class="p">,</span> <span class="k">in</span> <span class="p">&lt;</span>module<span class="p">&gt;</span>
+    __import__<span class="p">(</span><span class="s1">&#39;pkg_resources&#39;</span><span class="p">)</span>.run_script<span class="p">(</span><span class="s1">&#39;bcbio-nextgen-vm==0.1.0a0&#39;</span><span class="p">,</span> <span class="s1">&#39;bcbio_vm.py&#39;</span><span class="p">)</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/setuptools-18.4-py2.7.egg/pkg_resources/__init__.py&quot;</span><span class="p">,</span> line <span class="m">735</span><span class="p">,</span> <span class="k">in</span> run_script
 
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/setuptools-18.4-py2.7.egg/pkg_resources/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1659</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run_script</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/setuptools-18.4-py2.7.egg/pkg_resources/__init__.py&quot;</span><span class="p">,</span> line <span class="m">1659</span><span class="p">,</span> <span class="k">in</span> run_script
 
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/bcbio_nextgen_vm-0.1.0a0-py2.7.egg/EGG-INFO/scripts/bcbio_vm.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">89</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/bcbio_nextgen_vm-0.1.0a0-py2.7.egg/EGG-INFO/scripts/bcbio_vm.py&quot;</span><span class="p">,</span> line <span class="m">89</span><span class="p">,</span> <span class="k">in</span> <span class="p">&lt;</span>module<span class="p">&gt;</span>
 
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/bcbio_nextgen_vm-0.1.0a0-py2.7.egg/EGG-INFO/scripts/bcbio_vm.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">85</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/bcbio_nextgen_vm-0.1.0a0-py2.7.egg/EGG-INFO/scripts/bcbio_vm.py&quot;</span><span class="p">,</span> line <span class="m">85</span><span class="p">,</span> <span class="k">in</span> <span class="k">main</span>
 
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">70</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">335</span><span class="p">,</span> <span class="ow">in</span> <span class="n">work</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">70</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/commands/provider/cluster.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">185</span><span class="p">,</span> <span class="ow">in</span> <span class="n">work</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/provider/base.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">153</span><span class="p">,</span> <span class="ow">in</span> <span class="n">start</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/common/cluster.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">161</span><span class="p">,</span> <span class="ow">in</span> <span class="n">start</span>
-  <span class="n">File</span> <span class="s">&quot;build/bdist.linux-x86_64/egg/bcbiovm/common/cluster.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">144</span><span class="p">,</span> <span class="ow">in</span> <span class="n">execute</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">181</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/cli/app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">245</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post_run</span><span class="p">(</span><span class="n">returned</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/cli/app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">241</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run</span>
-    <span class="n">returned</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">169</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">func</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/subcommands.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">71</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__call__</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/subcommands.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">190</span><span class="p">,</span> <span class="ow">in</span> <span class="n">execute</span>
-    <span class="n">cluster</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">min_nodes</span><span class="o">=</span><span class="n">min_nodes</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/cluster.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">415</span><span class="p">,</span> <span class="ow">in</span> <span class="n">start</span>
-    <span class="n">keys</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">instance_id</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">ips</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/cluster.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">649</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_get_ssh_key_from_console_output</span>
-    <span class="s">r&#39;\1&#39;</span><span class="p">,</span> <span class="n">console_output</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-  <span class="n">File</span> <span class="s">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/re.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">155</span><span class="p">,</span> <span class="ow">in</span> <span class="n">sub</span>
-    <span class="k">return</span> <span class="n">_compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">repl</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
-<span class="ne">TypeError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">string</span> <span class="ow">or</span> <span class="nb">buffer</span>
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> line <span class="m">70</span><span class="p">,</span> <span class="k">in</span> run
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> line <span class="m">335</span><span class="p">,</span> <span class="k">in</span> work
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/base.py&quot;</span><span class="p">,</span> line <span class="m">70</span><span class="p">,</span> <span class="k">in</span> run
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/client/commands/provider/cluster.py&quot;</span><span class="p">,</span> line <span class="m">185</span><span class="p">,</span> <span class="k">in</span> work
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/provider/base.py&quot;</span><span class="p">,</span> line <span class="m">153</span><span class="p">,</span> <span class="k">in</span> <span class="k">start</span>
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/common/cluster.py&quot;</span><span class="p">,</span> line <span class="m">161</span><span class="p">,</span> <span class="k">in</span> <span class="k">start</span>
+  File <span class="s2">&quot;build/bdist.linux-x86_64/egg/bcbiovm/common/cluster.py&quot;</span><span class="p">,</span> line <span class="m">144</span><span class="p">,</span> <span class="k">in</span> execute
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/main.py&quot;</span><span class="p">,</span> line <span class="m">181</span><span class="p">,</span> <span class="k">in</span> <span class="k">main</span>
+    app.run<span class="p">()</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/cli/app.py&quot;</span><span class="p">,</span> line <span class="m">245</span><span class="p">,</span> <span class="k">in</span> run
+    <span class="k">return</span> self.post_run<span class="p">(</span>returned<span class="p">)</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/cli/app.py&quot;</span><span class="p">,</span> line <span class="m">241</span><span class="p">,</span> <span class="k">in</span> run
+    returned <span class="p">=</span> self.<span class="k">main</span><span class="p">(</span>*args<span class="p">)</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/main.py&quot;</span><span class="p">,</span> line <span class="m">169</span><span class="p">,</span> <span class="k">in</span> <span class="k">main</span>
+    <span class="k">return</span> self.params.func<span class="p">()</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/subcommands.py&quot;</span><span class="p">,</span> line <span class="m">71</span><span class="p">,</span> <span class="k">in</span> __call__
+    <span class="k">return</span> self.execute<span class="p">()</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/subcommands.py&quot;</span><span class="p">,</span> line <span class="m">190</span><span class="p">,</span> <span class="k">in</span> execute
+    cluster.<span class="k">start</span><span class="p">(</span>min_nodes<span class="p">=</span>min_nodes<span class="p">)</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/cluster.py&quot;</span><span class="p">,</span> line <span class="m">415</span><span class="p">,</span> <span class="k">in</span> <span class="k">start</span>
+    keys<span class="p">,</span> node.instance_id<span class="p">,</span> node.ips<span class="p">)</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/site-packages/elasticluster/cluster.py&quot;</span><span class="p">,</span> line <span class="m">649</span><span class="p">,</span> <span class="k">in</span> _get_ssh_key_from_console_output
+    <span class="k">r</span><span class="s1">&#39;\1&#39;</span><span class="p">,</span> console_output<span class="p">,</span> flags<span class="p">=</span><span class="k">re</span>.DOTALL<span class="p">)</span>.strip<span class="p">()</span>
+  File <span class="s2">&quot;/home/alex/miniconda/envs/_test/lib/python2.7/re.py&quot;</span><span class="p">,</span> line <span class="m">155</span><span class="p">,</span> <span class="k">in</span> <span class="k">sub</span>
+    <span class="k">return</span> _compile<span class="p">(</span>pattern<span class="p">,</span> flags<span class="p">)</span>.<span class="k">sub</span><span class="p">(</span>repl<span class="p">,</span> string<span class="p">,</span> <span class="k">count</span><span class="p">)</span>
+TypeError: expected string or buffer
 </code></pre></div>
 <p>Information related to keys from <a href="https://github.com/chapmanb/elasticluster/blob/bcbio/README-AZURE.rst">Elasticluster for Azure documentation</a>:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">6\. You&#39;ll need a keypair to access the virtual machines during provisioning, and later via ssh. For now, you should create a private key file that matches your management cert, like this:
 
-```bash
-~ $ openssl rsa -in managementCert.pem -out managementCert.key
-```
+<hr>
 
-SSH is picky about ownership/permissions on key files. Make sure that yours look like this:
-
-```
-~ $  ls -l ~/.ssh
-[...]
--rw------- 1 my_user_name my_user_name  797 May  3 18:00 managementCert.cer
-```
-Use these commands if needed on the .pem, .cer, and .key files:
-
-```bash
-# replace &#39;my_user_name&#39; with your username - you knew that
-~ $ sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
-~ $ sudo chmod 600 ~/.ssh/managementCert.pem
-# make sure you do this to all 3 files!
-```
-
-(**Note**:  access to a specific virtual machine using a keypair that is not also an Azure management keypair doesn&#39;t work at present, but is an open work item.)
+<p>6. You&#39;ll need a keypair to access the virtual machines during provisioning, and later via ssh. For now, you should create a private key file that matches your management cert, like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>openssl rsa -in managementCert.pem -out managementCert.key
 </code></pre></div>
+<p>SSH is picky about ownership/permissions on key files. Make sure that yours look like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span> ls -l ~/.ssh
+<span class="o">[</span>...<span class="o">]</span>
+-rw------- <span class="m">1</span> my_user_name my_user_name  <span class="m">797</span> May  <span class="m">3</span> 18:00 managementCert.cer
+</code></pre></div>
+<p>Use these commands if needed on the .pem, .cer, and .key files:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># replace &#39;my_user_name&#39; with your username - you knew that</span>
+~ <span class="nv">$ </span>sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
+~ <span class="nv">$ </span>sudo chmod <span class="m">600</span> ~/.ssh/managementCert.pem
+<span class="c"># make sure you do this to all 3 files!</span>
+</code></pre></div>
+<p>(<strong>Note</strong>:  access to a specific virtual machine using a keypair that is not also an Azure management keypair doesn&#39;t work at present, but is an open work item.)</p>
+
+<hr>
+
 <h3 id="step1-replace-ssh-with-home-user-ssh">Step1. Replace <code>~/.ssh</code> with <code>/home/user/.ssh</code></h3>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[cloud/azure-cloud]</span>
 <span class="na">provider</span> <span class="o">=</span> <span class="s">azure</span>
@@ -239,16 +236,16 @@ Use these commands if needed on the .pem, .cer, and .key files:
 </code></pre></div>
 <h3 id="step2-check-keys-permissions-in-home-user-ssh">Step2. Check keys permissions in <code>/home/user/.ssh</code></h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>ls -la
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">total 116
-drwx------  3 alex alex  4096 Nov  7 13:55 .
-drwx------ 87 alex alex 20480 Nov 13 15:45 ..
--rw-r--r--  1 alex alex  1522 Nov  7 10:49 config
-drwx------  2 alex alex  4096 Apr  6  2015 keys
--rw-------  1 alex alex 11574 Nov 12 22:22 known_hosts
--rw-------  1 alex alex 11352 Nov  7 10:51 known_hosts.old
--rw-------  1 alex alex   989 Oct 26 15:00 managementCert.cer
--rw-------  1 alex alex  1675 Oct 26 15:39 managementCert.key
--rw-------  1 alex alex  3099 Oct 26 15:00 managementCert.pem
+</code></pre></div><div class="highlight"><pre><code class="language-vim" data-lang="vim">total <span class="m">116</span>
+drwx<span class="p">------</span>  <span class="m">3</span> alex alex  <span class="m">4096</span> Nov  <span class="m">7</span> <span class="m">13</span>:<span class="m">55</span> .
+drwx<span class="p">------</span> <span class="m">87</span> alex alex <span class="m">20480</span> Nov <span class="m">13</span> <span class="m">15</span>:<span class="m">45</span> ..
+<span class="p">-</span>rw<span class="p">-</span><span class="k">r</span><span class="p">--</span><span class="k">r</span><span class="p">--</span>  <span class="m">1</span> alex alex  <span class="m">1522</span> Nov  <span class="m">7</span> <span class="m">10</span>:<span class="m">49</span> config
+drwx<span class="p">------</span>  <span class="m">2</span> alex alex  <span class="m">4096</span> Apr  <span class="m">6</span>  <span class="m">2015</span> keys
+<span class="p">-</span>rw<span class="p">-------</span>  <span class="m">1</span> alex alex <span class="m">11574</span> Nov <span class="m">12</span> <span class="m">22</span>:<span class="m">22</span> known_hosts
+<span class="p">-</span>rw<span class="p">-------</span>  <span class="m">1</span> alex alex <span class="m">11352</span> Nov  <span class="m">7</span> <span class="m">10</span>:<span class="m">51</span> known_hosts.<span class="k">old</span>
+<span class="p">-</span>rw<span class="p">-------</span>  <span class="m">1</span> alex alex   <span class="m">989</span> Oct <span class="m">26</span> <span class="m">15</span>:<span class="m">00</span> managementCert.cer
+<span class="p">-</span>rw<span class="p">-------</span>  <span class="m">1</span> alex alex  <span class="m">1675</span> Oct <span class="m">26</span> <span class="m">15</span>:<span class="m">39</span> managementCert.<span class="nb">key</span>
+<span class="p">-</span>rw<span class="p">-------</span>  <span class="m">1</span> alex alex  <span class="m">3099</span> Oct <span class="m">26</span> <span class="m">15</span>:<span class="m">00</span> managementCert.pem
 </code></pre></div>
 <h3 id="step3-update-keys-permissions">Step3. Update keys permissions</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>chmod <span class="m">600</span> managementCert.cer
