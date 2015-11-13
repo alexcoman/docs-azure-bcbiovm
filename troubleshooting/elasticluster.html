@@ -99,27 +99,27 @@ bcbiovm.client.base - [INFO]: Execution of command Stop ends with success. (0)
 </code></pre></div>
 <p>The elasticluster failed to cleanup the environment.</p>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/elastic-cluster-resources.png" alt="Elasticluster resources"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/elastic-cluster-resources.png" alt="Elasticluster resources">{: .center-image }</p>
 
 <p>In order to cleanup the environment you will need to follow this steps:</p>
 
 <h3 id="delete-all-the-bcbio_vm-virtual-machines">Delete all the bcbio_vm*** virtual machines**</h3>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine">{: .center-image }</p>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/azure-delete-vm-1.png" alt="Delete bcbio virtual machine">{: .center-image }</p>
 
 <h3 id="delete-the-storage-account">Delete the Storage Account</h3>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-storage-account.png" alt="Delete the Storage Account"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-storage-account.png" alt="Delete the Storage Account">{: .center-image }</p>
 
 <h3 id="delete-the-cloud-service">Delete the Cloud Service</h3>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-cloud-service.png" alt="Delete the Cloud Service"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-cloud-service.png" alt="Delete the Cloud Service">{: .center-image }</p>
 
 <h3 id="delete-the-virtual-network">Delete the Virtual Network</h3>
 
-<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-virtual-network.png" alt="Delete the Virtual Network"></p>
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/delete-virtual-network.png" alt="Delete the Virtual Network">{: .center-image }</p>
 
 <h2 id="typeerror-expected-string-or-buffer">TypeError: expected string or buffer</h2>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INFO</span><span class="p">:</span><span class="n">gc3</span><span class="o">.</span><span class="n">elasticluster</span><span class="p">:</span><span class="n">_start_node</span><span class="p">:</span> <span class="n">node</span> <span class="n">has</span> <span class="n">been</span> <span class="n">started</span>
@@ -164,23 +164,30 @@ bcbiovm.client.base - [INFO]: Execution of command Stop ends with success. (0)
 <span class="ne">TypeError</span><span class="p">:</span> <span class="n">expected</span> <span class="n">string</span> <span class="ow">or</span> <span class="nb">buffer</span>
 </code></pre></div>
 <p>Information related to keys from <a href="https://github.com/chapmanb/elasticluster/blob/bcbio/README-AZURE.rst">Elasticluster for Azure documentation</a>:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">6\. You&#39;ll need a keypair to access the virtual machines during provisioning, and later via ssh. For now, you should create a private key file that matches your management cert, like this:
 
-<p>6. You&#39;ll need a keypair to access the virtual machines during provisioning, and later via ssh. For now, you should create a private key file that matches your management cert, like this:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">  ~ <span class="nv">$ </span>openssl rsa -in managementCert.pem -out managementCert.key
-</code></pre></div>
-<p>SSH is picky about ownership/permissions on key files. Make sure that yours look like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  ~ $  ls -l ~/.ssh
-  [...]
-  -rw------- 1 my_user_name my_user_name  797 May  3 18:00 managementCert.cer
-</code></pre></div>
-<p>Use these commands if needed on the .pem, .cer, and .key files:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">  <span class="c"># replace &#39;my_user_name&#39; with your username - you knew that</span>
-  ~ <span class="nv">$ </span>sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
-  ~ <span class="nv">$ </span>sudo chmod <span class="m">600</span> ~/.ssh/managementCert.pem
-  <span class="c"># make sure you do this to all 3 files!</span>
-</code></pre></div>
-<p>(<strong>Note</strong>:  access to a specific virtual machine using a keypair that is not also an Azure management keypair doesn&#39;t work at present, but is an open work item.)</p>
+```bash
+~ $ openssl rsa -in managementCert.pem -out managementCert.key
+```
 
+SSH is picky about ownership/permissions on key files. Make sure that yours look like this:
+
+```
+~ $  ls -l ~/.ssh
+[...]
+-rw------- 1 my_user_name my_user_name  797 May  3 18:00 managementCert.cer
+```
+Use these commands if needed on the .pem, .cer, and .key files:
+
+```bash
+# replace &#39;my_user_name&#39; with your username - you knew that
+~ $ sudo chown my_user_name:my_user_name ~/.ssh/managementCert.pem
+~ $ sudo chmod 600 ~/.ssh/managementCert.pem
+# make sure you do this to all 3 files!
+```
+
+(**Note**:  access to a specific virtual machine using a keypair that is not also an Azure management keypair doesn&#39;t work at present, but is an open work item.)
+</code></pre></div>
 <h3 id="step1-replace-ssh-with-home-user-ssh">Step1. Replace <code>~/.ssh</code> with <code>/home/user/.ssh</code></h3>
 <div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[cloud/azure-cloud]</span>
 <span class="na">provider</span> <span class="o">=</span> <span class="s">azure</span>
