@@ -49,6 +49,9 @@
             
             <li><a href="/docs-azure-bcbiovm/doc/setup-azure-environment.html">Setup Windows Azure environment</a></li>
         
+            
+            <li><a href="/docs-azure-bcbiovm/doc/bcbio-cluster.html">bcbio cluster on Windows Azure</a></li>
+        
     
 </ul>
 
@@ -122,22 +125,6 @@ optional arguments:
 <p>The output for this command:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">[INFO] Execution of command PrivateKey ends with success. (None)
 [INFO] The private key was successfully generated.
-</code></pre></div>
-<h3 id="create-the-elasticluster-configuration-file">Create the elasticluster configuration file</h3>
-
-<p>Write Elasticluster configuration file with user information.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">usage: bcbio_vm.py azure prepare ec-config [-h] [--econfig ECONFIG]
-
-optional arguments:
-  -h, --help         show this help message and exit
-  --econfig ECONFIG  Elasticluster bcbio configuration file
-</code></pre></div>
-<p>We will use the default values.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure prepare ec-config
-</code></pre></div>
-<p>The output for this command.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">[INFO] Execution of command ECConfig ends with success. (None)
-[INFO] The elasticluster config was successfully generated.
 </code></pre></div>
 
                     </div>

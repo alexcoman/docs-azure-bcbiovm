@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>bcbio-nextgen-vm on Windows Azure : bcbio cluster on Windows Azure</title>
+        <meta name="description" content="A brief documentation for bcbio-nextgen-vm on Windows Azure">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/docs-azure-bcbiovm/css/syntax.css">
+        <link rel="stylesheet" href="/docs-azure-bcbiovm/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/docs-azure-bcbiovm/">bcbio-nextgen-vm on Windows Azure</a>
+    <small>A brief documentation for bcbio-nextgen-vm on Windows Azure</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-sm-2">
+                        <ul class="nav nav-list">
+    <li><a href="/docs-azure-bcbiovm/">Home</a></li>
+    
+        
+        
+
+        
+            
+                <li class="nav-header">Documentation</li>
+            
+            <li><a href="/docs-azure-bcbiovm/doc/environment-setup.html">Environment Setup</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/install-bcbio-nextgen-vm.html">Install bcbio-nextgen-vm</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/setup-docker.html">Setup Docker</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/setup-azure-environment.html">Setup Windows Azure environment</a></li>
+        
+            
+            <li><a href="/docs-azure-bcbiovm/doc/bcbio-cluster.html">bcbio cluster on Windows Azure</a></li>
+        
+    
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-sm-10">
+                        <div class="page-header">
+    <h2>bcbio cluster on Windows Azure
+        
+    </h2>
+</div>
+
+<h3 id="create-the-elasticluster-configuration-file">Create the elasticluster configuration file</h3>
+
+<p>Write Elasticluster configuration file with user information.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">usage: bcbio_vm.py azure config create [-h] [--econfig ECONFIG]
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --econfig ECONFIG  Elasticluster bcbio configuration file
+</code></pre></div>
+<p>We will use the default values.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure config create
+</code></pre></div>
+<p>The output for this command.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[INFO] Execution of command ECConfig ends with success. (None)
+[INFO] The elasticluster config was successfully generated.
+</code></pre></div>
+<h3 id="edit-the-elasticluster-configuration-file">Edit the elasticluster configuration file</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>bcbio_vm.py azure config edit
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Number of cluster worker nodes (0 starts a single machine instead of a cluster) [2]: 3    
+Machine type for frontend worker node [Small]: 
+Machine type for compute nodes [Small]: 
+Size of encrypted NFS mounted filesystem, in Gb [200]: 20
+
+[INFO]: Execution of command EditConfig ends with success. (None)
+</code></pre></div>
+<p>In order to check the modification we can run the following command:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>cat ~/.bcbio/elasticluster/azure.config
+</code></pre></div><div class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="k">[cloud/azure-cloud]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">azure</span>
+<span class="na">subscription_id</span> <span class="o">=</span> 
+<span class="na">certificate</span> <span class="o">=</span> <span class="s">~/.ssh/managementCert.pem</span>
+
+<span class="k">[login/azure-login]</span>
+<span class="na">image_user</span> <span class="o">=</span> <span class="s">ubuntu</span>
+<span class="na">image_user_sudo</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">image_sudo</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">user_key_name</span> <span class="o">=</span> <span class="s">az_ec_key</span>
+<span class="na">user_key_private</span> <span class="o">=</span> <span class="s">~/.ssh/managementCert.key</span>
+<span class="na">user_key_public</span> <span class="o">=</span> <span class="s">~/.ssh/managementCert.pem</span>
+
+<span class="k">[setup/ansible]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">ansible</span>
+<span class="na">frontend_groups</span> <span class="o">=</span> <span class="s">common</span>
+<span class="na">compute_groups</span> <span class="o">=</span> <span class="s">clients</span>
+
+<span class="k">[setup/ansible-slurm]</span>
+<span class="na">provider</span> <span class="o">=</span> <span class="s">ansible</span>
+<span class="na">frontend_groups</span> <span class="o">=</span> <span class="s">slurm_master</span>
+<span class="na">compute_groups</span> <span class="o">=</span> <span class="s">slurm_clients</span>
+<span class="na">global_var_slurm_selecttype</span> <span class="o">=</span> <span class="s">select/cons_res</span>
+<span class="na">global_var_slurm_selecttypeparameters</span> <span class="o">=</span> <span class="s">CR_Core_Memory</span>
+
+<span class="k">[cluster/bcbio]</span>
+<span class="na">cloud</span> <span class="o">=</span> <span class="s">azure-cloud</span>
+<span class="na">login</span> <span class="o">=</span> <span class="s">azure-login</span>
+<span class="na">ssh_to</span> <span class="o">=</span> <span class="s">frontend</span>
+<span class="na">ssh_hostkeys_from_console_output</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">security_group</span> <span class="o">=</span> <span class="s">default</span>
+<span class="na">setup_provider</span> <span class="o">=</span> <span class="s">ansible-slurm</span>
+<span class="na">frontend_nodes</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">compute_nodes</span> <span class="o">=</span> <span class="s">3</span>
+<span class="na">image_id</span> <span class="o">=</span> <span class="s">b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140414-en-us-30GB</span>
+<span class="na">root_volume_size</span> <span class="o">=</span> <span class="s">20</span>
+<span class="na">flavor</span> <span class="o">=</span> <span class="s">Small</span>
+<span class="na">location</span> <span class="o">=</span> <span class="s">East US</span>
+<span class="na">wait_timeout</span> <span class="o">=</span> <span class="s">600</span>
+<span class="na">base_name</span> <span class="o">=</span> <span class="s">bcbio</span>
+<span class="na">global_var_ansible_ssh_host_key_dsa_public</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+
+<span class="k">[cluster/bcbio/frontend]</span>
+<span class="na">flavor</span> <span class="o">=</span> <span class="s">Small</span>
+<span class="na">encrypted_volume_size</span> <span class="o">=</span> <span class="s">20</span>
+<span class="na">encrypted_volume_type</span> <span class="o">=</span> <span class="s">io1</span>
+<span class="na">encrypted_volume_iops</span> <span class="o">=</span> <span class="s">600</span>
+</code></pre></div>
+<h3 id="set-the-subscription_id">Set the subscription_id</h3>
+
+<p>In order to get the <code>subscription_id</code> it will require to open a browser and go to the portal: <a href="https://manage.windowsazure.com">manage.windowsazure.com</a>. Once you sign in, select the Settings tab on the far bottom of the left side of the portal, then click on Subscriptions.</p>
+
+<p><img src="https://alexandrucoman.github.io/docs-azure-bcbiovm/assets/windows-azure-subscriptions.png" alt="Settings / Subscriptions"></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>vim ~/.bcbio/elasticluster/azure.config
+</code></pre></div>
+<p>And now edit the following line:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">subscription_id = 
+</code></pre></div>
+<p>with</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># Change the xxx with the value from Windows Azure Portal
+subscription_id = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+</code></pre></div>
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="https://github.com/alexandrucoman/docs-azure-bcbiovm">bcbio-nextgen-vm on Windows Azure</a>
+
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
